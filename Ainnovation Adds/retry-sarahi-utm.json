@@ -1,0 +1,87 @@
+{
+  "name": "Retry Failed — Sarahi UTM Tracking",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "a1b2c3d4-0001-0001-0001-000000000001",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "http://localhost:5678/rest/executions",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            { "name": "status", "value": "error" },
+            { "name": "workflowId", "value": "Hs5qf41sjGjkQjZ5" },
+            { "name": "limit", "value": "500" }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-N8N-API-KEY",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwZjBiZDM4OC0yODZlLTQwNTktOWEwZS1hZjczODFkZTc4YjQiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiOTRiNzYzZTgtYWY0YS00NmM4LTkxOWQtZWYzNTBkYjQ0ZjkyIiwiaWF0IjoxNzc2NDY4MTMzfQ.BhAH6uXbyTtgWGBdJxGExm6X7FJoX3X452pj1KsaLg4"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1b2c3d4-0001-0001-0001-000000000002",
+      "name": "Get Failed Executions",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// /rest/executions returns array directly (not wrapped in .data)\nconst input = $input.first().json;\nconst list = Array.isArray(input) ? input : (input.data || input.results || []);\nif (!list || list.length === 0) {\n  return [{ json: { message: 'No failed executions found', count: 0 } }];\n}\nreturn list.map(exec => ({ json: { id: exec.id } }));"
+      },
+      "id": "a1b2c3d4-0001-0001-0001-000000000003",
+      "name": "Extract IDs",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=http://localhost:5678/rest/executions/{{ $json.id }}/retry",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-N8N-API-KEY",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwZjBiZDM4OC0yODZlLTQwNTktOWEwZS1hZjczODFkZTc4YjQiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiOTRiNzYzZTgtYWY0YS00NmM4LTkxOWQtZWYzNTBkYjQ0ZjkyIiwiaWF0IjoxNzc2NDY4MTMzfQ.BhAH6uXbyTtgWGBdJxGExm6X7FJoX3X452pj1KsaLg4"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1b2c3d4-0001-0001-0001-000000000004",
+      "name": "Retry Each Execution",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [900, 300]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [[{ "node": "Get Failed Executions", "type": "main", "index": 0 }]]
+    },
+    "Get Failed Executions": {
+      "main": [[{ "node": "Extract IDs", "type": "main", "index": 0 }]]
+    },
+    "Extract IDs": {
+      "main": [[{ "node": "Retry Each Execution", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

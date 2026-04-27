@@ -1,0 +1,1903 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ainnovation · Estrategia explicada al equipo · Jordi Urbea</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=satoshi@400,500,700,900&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --violet: #8B5CF6;
+    --violet-deep: #6A3EB8;
+    --magenta: #E040FB;
+    --pink-pastel: #F8C8DC;
+    --navy: #0D0D14;
+    --navy-soft: #1A1A2E;
+    --white: #FFFFFF;
+    --text-dim: rgba(255,255,255,0.65);
+    --text-mute: rgba(255,255,255,0.45);
+    --line: rgba(255,255,255,0.12);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Satoshi', system-ui, sans-serif;
+    overflow-x: hidden;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+  }
+  body { height: 100vh; overflow-y: scroll; }
+
+  .slide {
+    width: 100vw;
+    height: 100vh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    padding: 40px 60px 30px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  /* Brand Sandwich */
+  .brand-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+    flex-shrink: 0;
+  }
+  .brand-bar .left { color: var(--white); letter-spacing: 0.3em; }
+  .brand-bar .center { color: var(--violet); }
+  .brand-bar .right { color: var(--text-mute); }
+
+  .footer-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+    flex-shrink: 0;
+    margin-top: auto;
+  }
+  .footer-bar .center {
+    color: var(--white);
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+  }
+
+  /* Body — split layout */
+  .body {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 50px;
+    padding: 30px 0;
+    overflow: hidden;
+  }
+  .body.full { grid-template-columns: 1fr; }
+  .body.cover {
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .left-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-y: auto;
+    padding-right: 10px;
+  }
+  .right-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .right-col img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border: 1px solid var(--line);
+    box-shadow: 0 20px 60px rgba(139,92,246,0.18);
+  }
+
+  /* Variant layouts — duo (2), trio (3), quad (4 images) */
+  .right-col.duo, .right-col.trio, .right-col.quad {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .right-col.quad { gap: 8px; }
+  .variant-img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    height: 100%;
+    justify-content: center;
+    min-width: 0;
+  }
+  .variant-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--magenta);
+    font-weight: 700;
+    margin-bottom: 8px;
+    flex-shrink: 0;
+  }
+  .variant-img img {
+    max-width: 100%;
+    max-height: calc(100% - 22px);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border: 1px solid var(--line);
+    box-shadow: 0 10px 30px rgba(139,92,246,0.15);
+  }
+
+  /* Typography */
+  h1.cover-title {
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 700;
+    font-size: clamp(70px, 9vw, 160px);
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+  }
+  h1.hero {
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 600;
+    font-size: clamp(40px, 4.5vw, 78px);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  h1.hero .accent { color: var(--magenta); }
+
+  h2.section {
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 600;
+    font-size: clamp(32px, 3.5vw, 56px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .ad-id {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: var(--magenta);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .ad-title {
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 600;
+    font-size: clamp(34px, 3.2vw, 52px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .vertical-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--violet);
+    margin-bottom: 24px;
+    font-weight: 700;
+  }
+
+  .eyebrow {
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--magenta);
+    margin-bottom: 16px;
+  }
+  .body-copy {
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 400;
+    font-size: clamp(15px, 1.15vw, 19px);
+    line-height: 1.5;
+    color: var(--white);
+  }
+  .body-copy.dim { color: var(--text-dim); }
+  .body-copy strong { color: var(--magenta); font-weight: 700; }
+
+  blockquote.hook {
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 600;
+    font-size: clamp(18px, 1.5vw, 26px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--white);
+    border-left: 3px solid var(--magenta);
+    padding: 12px 0 12px 18px;
+    margin: 18px 0;
+    text-transform: uppercase;
+  }
+
+  .meta-row {
+    display: flex;
+    gap: 22px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+  .meta-item {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+  .meta-item .label {
+    color: var(--text-mute);
+    margin-right: 4px;
+  }
+  .meta-item .value {
+    color: var(--white);
+    font-weight: 700;
+  }
+
+  .var-block {
+    border: 1px solid var(--line);
+    background: rgba(139,92,246,0.05);
+    padding: 14px 16px;
+    margin: 14px 0;
+  }
+  .var-block .lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--violet);
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .var-block .txt {
+    font-family: 'Satoshi', sans-serif;
+    font-size: 14px;
+    line-height: 1.45;
+    color: var(--white);
+  }
+
+  .reading-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .reading-cell {
+    border: 1px solid var(--line);
+    padding: 12px 14px;
+    background: rgba(255,255,255,0.025);
+  }
+  .reading-cell.win {
+    border-color: rgba(224,64,251,0.4);
+    background: rgba(224,64,251,0.06);
+  }
+  .reading-cell.lose {
+    border-color: rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.02);
+  }
+  .reading-cell .lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .reading-cell.win .lbl { color: var(--magenta); }
+  .reading-cell.lose .lbl { color: var(--text-mute); }
+  .reading-cell .txt {
+    font-family: 'Satoshi', sans-serif;
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--white);
+  }
+  .reading-cell .action {
+    font-family: 'Satoshi', sans-serif;
+    font-size: 12px;
+    line-height: 1.35;
+    color: var(--text-dim);
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px dashed rgba(255,255,255,0.1);
+  }
+
+  ul.bullet-list {
+    list-style: none;
+    margin-top: 14px;
+  }
+  ul.bullet-list li {
+    font-family: 'Satoshi', sans-serif;
+    font-size: clamp(14px, 1.1vw, 17px);
+    line-height: 1.45;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+  ul.bullet-list li::before {
+    content: "■";
+    color: var(--magenta);
+    font-size: 11px;
+    flex-shrink: 0;
+  }
+
+  /* Cover */
+  .cover-meta {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .cover-meta .tagline {
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 600;
+    font-size: clamp(22px, 2.2vw, 38px);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    color: var(--magenta);
+  }
+  .cover-meta .doc-info {
+    text-align: right;
+    font-family: 'Satoshi', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  /* Quote slide */
+  .quote-text {
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 600;
+    font-size: clamp(36px, 4vw, 70px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    text-transform: uppercase;
+    margin-bottom: 30px;
+  }
+  .quote-text em {
+    color: var(--magenta);
+    font-style: normal;
+  }
+  .quote-attr {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-mute);
+  }
+
+  /* Grid de los 19 ads (slide 3 overview + slide 24 galería) */
+  .ads-grid-19 {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+    margin-top: 18px;
+    padding-right: 10px;
+  }
+  /* Grid para overview con 41 activos (slide 3) — 8 cols, scroll dentro del slide */
+  .ads-grid-all {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 6px;
+    margin-top: 14px;
+    padding-right: 10px;
+  }
+  .ads-grid-all .grid-tile {
+    aspect-ratio: 9/16;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--line);
+    overflow: hidden;
+    position: relative;
+  }
+  .ads-grid-all .grid-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .ads-grid-all .grid-tile .id-tag {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    background: rgba(0,0,0,0.78);
+    color: var(--magenta);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7px;
+    padding: 1px 3px;
+    letter-spacing: 0.06em;
+    font-weight: 700;
+  }
+  .ads-grid-all .grid-tile .vt {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    background: rgba(0,0,0,0.78);
+    color: var(--white);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7px;
+    padding: 1px 3px;
+    letter-spacing: 0.06em;
+    font-weight: 700;
+  }
+  .ads-grid-all .grid-tile .vt.ai { background: var(--magenta); }
+  .ads-grid-all .grid-tile .vt.stk { background: #4FB8B8; color: var(--navy); }
+  /* badge para indicar qué variantes tiene cada ad */
+  .grid-tile .variants-badge {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    display: flex;
+    gap: 2px;
+  }
+  .grid-tile .variants-badge span {
+    background: rgba(0,0,0,0.78);
+    color: var(--white);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7px;
+    padding: 1px 3px;
+    letter-spacing: 0.06em;
+    font-weight: 700;
+  }
+  .grid-tile .variants-badge .b-ai { background: var(--magenta); }
+  .grid-tile .variants-badge .b-stk { background: #4FB8B8; color: var(--navy); }
+  .grid-tile {
+    aspect-ratio: 9/16;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--line);
+    overflow: hidden;
+    position: relative;
+  }
+  .grid-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .grid-tile .id-tag {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    background: rgba(0,0,0,0.7);
+    color: var(--magenta);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    padding: 2px 4px;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+  }
+
+  /* Tables */
+  table.specs {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    font-family: 'Satoshi', sans-serif;
+    font-size: 13px;
+  }
+  table.specs th, table.specs td {
+    text-align: left;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    vertical-align: top;
+  }
+  table.specs th {
+    background: rgba(139,92,246,0.1);
+    color: var(--violet);
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  table.specs td {
+    background: rgba(255,255,255,0.02);
+  }
+  table.specs td.num {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--magenta);
+    font-weight: 700;
+  }
+
+  /* Navigation */
+  .nav-hint {
+    position: fixed;
+    bottom: 14px;
+    right: 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: rgba(255,255,255,0.35);
+    z-index: 10;
+    pointer-events: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: opacity 1.5s;
+  }
+  .progress-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: var(--magenta);
+    transition: width 0.3s;
+    z-index: 100;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .body { grid-template-columns: 1fr; gap: 20px; }
+    .right-col { max-height: 40vh; }
+    .ads-grid-19 { grid-template-columns: repeat(5, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+<div class="nav-hint" id="nav-hint">↓ scroll · ↑↓ keys · espacio</div>
+
+<!-- 1 · COVER -->
+<section class="slide">
+  <div class="brand-bar">
+    <div class="left">AINNOVATION</div>
+    <div class="center">EQUIPO INTERNO</div>
+    <div class="right">26 ABRIL 2026</div>
+  </div>
+  <div class="body cover">
+    <div>
+      <h1 class="cover-title">LA<br>ESTRATEGIA<br>EXPLICADA<br>POR <span style="color: var(--magenta);">JORDI</span>.</h1>
+      <div class="cover-meta">
+        <div class="tagline">Lo que están construyendo · y cómo se lee.</div>
+        <div class="doc-info">Internal Team Briefing<br>Sesión Q2 2026<br>19 ads · 11 verticales</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div>JORDI URBEA · CEO OGILVY SPAIN</div>
+    <div class="center">AINNOVATION INTERNAL</div>
+    <div>01 / 29</div>
+  </div>
+</section>
+
+<!-- 2 · QUIÉN SOY + TESIS -->
+<section class="slide">
+  <div class="brand-bar">
+    <div class="left">AINNOVATION</div>
+    <div class="center">CONTEXTO</div>
+    <div class="right">02 / 29</div>
+  </div>
+  <div class="body full">
+    <div class="left-col">
+      <div class="eyebrow">Por qué hablo con ustedes</div>
+      <h1 class="hero">Llevo 27 años haciendo lo que ustedes están construyendo. Necesitan oírlo de alguien que ya lo recorrió.</h1>
+      <p class="body-copy" style="margin-top: 24px;">
+        Soy Jordi Urbea. CEO de Ogilvy Spain desde octubre 2025. Antes, 21 años dirigiendo OgilvyOne — la rama digital + direct + data del grupo. Construí el hub Customer Engagement & Data de Ogilvy en Europa. Inicié Ogilvy Upcelerator, el primer accelerator del grupo a nivel mundial.
+      </p>
+      <p class="body-copy" style="margin-top: 16px;">
+        Lo que ustedes hacen — extracción estructurada de datos por conversación, IA democratizada en producción real, hiperpersonalización por vertical — es lo que nosotros operamos en Madrid y Barcelona con 600 personas. Ustedes lo están haciendo con 1. Eso es <strong>ventaja competitiva real para LATAM</strong> si lo escalan bien.
+      </p>
+      <p class="body-copy dim" style="margin-top: 16px;">
+        Esta sesión no es teoría. Es interpretación. Cuando lleguen los datos en sem 3-4, este framework decide qué escalar, qué matar, y qué replicar.
+      </p>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div>SECCIÓN 1</div>
+    <div class="center">CONTEXTO PERSONAL</div>
+    <div>02 / 29</div>
+  </div>
+</section>
+
+<!-- 3 · LOS 19 ADS · TODAS LAS VARIANTES OVERVIEW -->
+<section class="slide">
+  <div class="brand-bar">
+    <div class="left">AINNOVATION</div>
+    <div class="center">19 ADS · TODAS LAS VARIANTES · 39 CREATIVOS</div>
+    <div class="right">03 / 29</div>
+  </div>
+  <div class="body full">
+    <div class="left-col">
+      <div class="eyebrow">El sistema completo · 19 ads × 1-3 variantes</div>
+      <h2 class="section">19 ads · 11 verticales · 5 funciones · 39 creativos en total</h2>
+      <p class="body-copy dim" style="margin-bottom: 14px;">
+        No son 19 ads sueltos. Son 5 funciones MECE (entry, premium, lead magnet, B2B, retargeting) cubriendo 11 verticales. Hoy se ejecutó el rollout del test mascota: <strong>19 originales</strong> + <strong>17 con Los AI</strong> + <strong>5 con stock</strong> = 41 creativos listos para Round 1.
+      </p>
+      <div class="ads-grid-all">
+        <!-- ROW 1 (15): D1-01 trio + D1-02 trio + D1-03 trio + D2-07 trio + D2-10 trio = 15 (5 trios con stock) -->
+        <div class="grid-tile"><div class="id-tag">D1-01</div><img src="Ainnovation Adds/AD DOC1-01 — EL DATO (General)/doc1-01-img2-detalle.png" alt="D1-01"></div>
+        <div class="grid-tile"><div class="id-tag">D1-01</div><span class="vt ai">AI</span><img src="Ainnovation Adds/AD DOC1-01 — EL DATO (General)/_test-mascota-variantA-losai/doc1-01-variantA-losai.png" alt="D1-01 ai"></div>
+        <div class="grid-tile"><div class="id-tag">D1-01</div><span class="vt stk">S</span><img src="Ainnovation Adds/AD DOC1-01 — EL DATO (General)/_test-mascota-variantB-stock/doc1-01-img1-hero-stockmodel.png" alt="D1-01 stock"></div>
+        <div class="grid-tile"><div class="id-tag">D1-02</div><img src="Ainnovation Adds/AD DOC1-02 — BELLEZA (Una Semana)/doc1-02-img2-detalle.png" alt="D1-02"></div>
+        <div class="grid-tile"><div class="id-tag">D1-02</div><span class="vt ai">AI</span><img src="Ainnovation Adds/AD DOC1-02 — BELLEZA (Una Semana)/_test-mascota-variantA-losai/doc1-02-variantA-losai.png" alt="D1-02 ai"></div>
+        <div class="grid-tile"><div class="id-tag">D1-02</div><span class="vt stk">S</span><img src="Ainnovation Adds/AD DOC1-02 — BELLEZA (Una Semana)/_test-mascota-variantB-stock/doc1-02-variantB-stock.png" alt="D1-02 stock"></div>
+        <div class="grid-tile" style="background:transparent;border:1px dashed rgba(255,255,255,0.06);"></div>
+        <div class="grid-tile" style="background:transparent;border:1px dashed rgba(255,255,255,0.06);"></div>
+        <div class="grid-tile"><div class="id-tag">D1-03</div><img src="Ainnovation Adds/AD DOC1-03 — RETAIL ALTO VOLUMEN/doc1-03-img1-hero.png" alt="D1-03"></div>
+        <div class="grid-tile"><div class="id-tag">D1-03</div><span class="vt ai">AI</span><img src="Ainnovation Adds/AD DOC1-03 — RETAIL ALTO VOLUMEN/_test-mascota-variantA-losai/doc1-03-variantA-losai.png" alt="D1-03 ai"></div>
+        <div class="grid-tile"><div class="id-tag">D1-03</div><span class="vt stk">S</span><img src="Ainnovation Adds/AD DOC1-03 — RETAIL ALTO VOLUMEN/_test-mascota-variantB-stock/doc1-03-variantB-stock.png" alt="D1-03 stock"></div>
+        <div class="grid-tile"><div class="id-tag">D2-07</div><img src="Ainnovation Adds/AD DOC2-07 — INMOBILIARIA/doc2-07-img1-hero.png" alt="D2-07"></div>
+        <div class="grid-tile"><div class="id-tag">D2-07</div><span class="vt ai">AI</span><img src="Ainnovation Adds/AD DOC2-07 — INMOBILIARIA/_test-mascota-variantA-losai/doc2-07-variantA-losai.png" alt="D2-07 ai"></div>
+        <div class="grid-tile"><div class="id-tag">D2-07</div><span class="vt stk">S</span><img src="Ainnovation Adds/AD DOC2-07 — INMOBILIARIA/_test-mascota-variantB-stock/doc2-07-variantB-stock.png" alt="D2-07 stock"></div>
+        <div class="grid-tile" style="background:transparent;border:1px dashed rgba(255,255,255,0.06);"></div>
+        <div class="grid-tile" style="background:transparent;border:1px dashed rgba(255,255,255,0.06);"></div>
+        <div class="grid-tile"><div class="id-tag">D2-10</div><img src="Ainnovation Adds/AD DOC2-10 — SISTEMA COMPLETO 4999/doc2-10-img1-hero.png" alt="D2-10"></div>
+        <div class="grid-tile"><div class="id-tag">D2-10</div><span class="vt ai">AI</span><img src="Ainnovation Adds/AD DOC2-10 — SISTEMA COMPLETO 4999/_test-mascota-variantA-losai/doc2-10-variantA-losai.png" alt="D2-10 ai"></div>
+        <div class="grid-tile"><div class="id-tag">D2-10</div><span class="vt stk">S</span><img src="Ainnovation Adds/AD DOC2-10 — SISTEMA COMPLETO 4999/_test-mascota-variantB-stock/doc2-10-variantB-stock.png" alt="D2-10 stock"></div>
+        <!-- ROW 2 (15): 7 duos D1-04 a D2-02 + 1 empty -->
+        <div class="grid-tile"><div class="id-tag">D1-04</div><img src="Ainnovation Adds/AD DOC1-04 — PACIENTE PERDIDA/doc1-04-img1-hero.png" alt="D1-04"></div>
+        <div class="grid-tile"><div class="id-tag">D1-04</div><span class="vt ai">AI</span><img src="Ainnovation Adds/AD DOC1-04 — PACIENTE PERDIDA/_test-mascota-variantA-losai/doc1-04-variantA-losai.png" alt="D1-04 ai"></div>
+        <div class="grid-tile"><div class="id-tag">D1-05</div><img src="Ainnovation Adds/AD DOC1-05 — GHL/doc1-05-img1-hero.png" alt="D1-05"></div>
+        <div class="grid-tile"><div class="id-tag">D1-05</div><span class="vt ai">AI</span><img src="Ainnovation Adds/AD DOC1-05 — GHL/_test-mascota-variantA-losai/doc1-05-variantA-losai.png" alt="D1-05 ai"></div>
+        <div class="grid-tile" style="background:transparent;border:1px dashed rgba(255,255,255,0.06);"></div>
+        <div class="grid-tile"><div class="id-tag">D1-06</div><img src="Ainnovation Adds/AD DOC1-06 — RESELLERS GHL/doc1-06-img1-hero.png" alt="D1-06"></div>
+        <div class="grid-tile"><div class="id-tag">D1-06</div><span class="vt ai">AI</span><img src="Ainnovation Adds/AD DOC1-06 — RESELLERS GHL/_test-mascota-variantA-losai/doc1-06-variantA-losai.png" alt="D1-06 ai"></div>
+        <div class="grid-tile"><div class="id-tag">D1-07</div><img src="Ainnovation Adds/AD DOC1-07 — AGENCIAS DE MARKETING/doc1-07-img1-hero.png" alt="D1-07"></div>
+        <div class="grid-tile"><div class="id-tag">D1-07</div><span class="vt ai">AI</span><img src="Ainnovation Adds/AD DOC1-07 — AGENCIAS DE MARKETING/_test-mascota-variantA-losai/doc1-07-variantA-losai.png" alt="D1-07 ai"></div>
+        <div class="grid-tile"><div class="id-tag">D1-08</div><img src="Ainnovation Adds/AD DOC1-08 — INMOBILIARIA/doc1-08-img1-hero.png" alt="D1-08"></div>
+        <div class="grid-tile"><div class="id-tag">D1-08</div><span class="vt ai">AI</span><img src="Ainnovation Adds/AD DOC1-08 — INMOBILIARIA/_test-mascota-variantA-losai/doc1-08-variantA-losai.png" alt="D1-08 ai"></div>
+        <div class="grid-tile"><div class="id-tag">D2-01</div><img src="Ainnovation Adds/AD DOC2-01 — TABLA COMPARATIVA/doc2-01-img2-detalle.png" alt="D2-01"></div>
+        <div class="grid-tile"><div class="id-tag">D2-01</div><span class="vt ai">AI</span><img src="Ainnovation Adds/AD DOC2-01 — TABLA COMPARATIVA/_test-mascota-variantA-losai/doc2-01-variantA-losai.png" alt="D2-01 ai"></div>
+        <div class="grid-tile"><div class="id-tag">D2-02</div><img src="Ainnovation Adds/AD DOC2-02 — 4,827 MENSAJES/doc2-02-img1-hero.png" alt="D2-02"></div>
+        <div class="grid-tile"><div class="id-tag">D2-02</div><span class="vt ai">AI</span><img src="Ainnovation Adds/AD DOC2-02 — 4,827 MENSAJES/_test-mascota-variantA-losai/doc2-02-variantA-losai.png" alt="D2-02 ai"></div>
+        <div class="grid-tile"><div class="id-tag">D2-03</div><img src="Ainnovation Adds/AD DOC2-03 — PACIENTE PERDIDA/doc2-03-img2-detalle.png" alt="D2-03"></div>
+        <div class="grid-tile"><div class="id-tag">D2-03</div><span class="vt ai">AI</span><img src="Ainnovation Adds/AD DOC2-03 — PACIENTE PERDIDA/_test-mascota-variantA-losai/doc2-03-variantA-losai.png" alt="D2-03 ai"></div>
+        <div class="grid-tile"><div class="id-tag">D2-04</div><img src="Ainnovation Adds/AD DOC2-04 — GHL CON EQUIPO EXPERTO/doc2-04-img2-detalle.png" alt="D2-04"></div>
+        <div class="grid-tile"><div class="id-tag">D2-04</div><span class="vt ai">AI</span><img src="Ainnovation Adds/AD DOC2-04 — GHL CON EQUIPO EXPERTO/_test-mascota-variantA-losai/doc2-04-variantA-losai.png" alt="D2-04 ai"></div>
+        <div class="grid-tile"><div class="id-tag">D2-05</div><img src="Ainnovation Adds/AD DOC2-05 — RESELLERS GHL/doc2-05-img2-detalle.png" alt="D2-05"></div>
+        <div class="grid-tile"><div class="id-tag">D2-05</div><span class="vt ai">AI</span><img src="Ainnovation Adds/AD DOC2-05 — RESELLERS GHL/_test-mascota-variantA-losai/doc2-05-variantA-losai.png" alt="D2-05 ai"></div>
+        <div class="grid-tile"><div class="id-tag">D2-06</div><img src="Ainnovation Adds/AD DOC2-06 — AGENCIAS DE MARKETING/doc2-06-img1-hero.png" alt="D2-06"></div>
+        <div class="grid-tile"><div class="id-tag">D2-06</div><span class="vt ai">AI</span><img src="Ainnovation Adds/AD DOC2-06 — AGENCIAS DE MARKETING/_test-mascota-variantA-losai/doc2-06-variantA-losai.png" alt="D2-06 ai"></div>
+        <div class="grid-tile"><div class="id-tag">D2-09</div><img src="Ainnovation Adds/AD DOC2-09 — RETARGETING UNIVERSAL/doc2-09-img1-hero.png" alt="D2-09"></div>
+        <div class="grid-tile"><div class="id-tag">D2-09</div><span class="vt ai">AI</span><img src="Ainnovation Adds/AD DOC2-09 — RETARGETING UNIVERSAL/_test-mascota-variantA-losai/doc2-09-variantA-losai.png" alt="D2-09 ai"></div>
+        <div class="grid-tile"><div class="id-tag">D1-09</div><img src="Ainnovation Adds/AD DOC1-09 — STAGING/doc1-09-img1-hero.png" alt="D1-09"></div>
+        <div class="grid-tile"><div class="id-tag">D2-08</div><img src="Ainnovation Adds/AD DOC2-08 — STAGING AI GRATIS/doc2-08-img1-hero.png" alt="D2-08"></div>
+        <div class="grid-tile" style="background:transparent;border:1px dashed rgba(255,255,255,0.06);"></div>
+        <div class="grid-tile" style="background:transparent;border:1px dashed rgba(255,255,255,0.06);"></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div>SECCIÓN 2</div>
+    <div class="center">19 ADS · 39 VARIANTES TOTAL</div>
+    <div>03 / 29</div>
+  </div>
+</section>
+
+<!-- AD-BY-AD SLIDES START HERE -->
+
+<!-- 4 · D1-01 -->
+<section class="slide">
+  <div class="brand-bar">
+    <div class="left">AINNOVATION</div>
+    <div class="center">AD 1 DE 19</div>
+    <div class="right">04 / 29</div>
+  </div>
+  <div class="body">
+    <div class="left-col">
+      <div class="ad-id">D1-01 · DOC1 #1</div>
+      <div class="ad-title">EL DATO (General)</div>
+      <div class="vertical-tag">Vertical · GENERAL · Control transversal</div>
+      <div class="meta-row">
+        <div class="meta-item"><span class="label">Persona:</span><span class="value">PyME 25-50, todos los giros</span></div>
+        <div class="meta-item"><span class="label">Tier:</span><span class="value">$1,999/mes</span></div>
+        <div class="meta-item"><span class="label">CTA:</span><span class="value">DEMO</span></div>
+      </div>
+      <blockquote class="hook">"1,532 mensajes contestados · 87 citas agendadas · 541 follow-ups · 24/7"</blockquote>
+      <div class="var-block">
+        <div class="lbl">Variable que testea</div>
+        <div class="txt">Dato puro genérico vs verticales. Es el control group de toda la campaña.</div>
+      </div>
+      <div class="reading-grid">
+        <div class="reading-cell win">
+          <div class="lbl">Si gana a verticales</div>
+          <div class="txt">PyME mexicana compra por dato puro, no por identificación tribal con su giro.</div>
+          <div class="action">Acción: simplificar a 3-5 ads master con variantes de número. Producción 80% más barata.</div>
+        </div>
+        <div class="reading-cell lose">
+          <div class="lbl">Si pierde a verticales</div>
+          <div class="txt">Identificación tribal pesa más que el número genérico.</div>
+          <div class="action">Acción: producción permanente de creatives por vertical. Modelo "performance vertical".</div>
+        </div>
+      </div>
+    </div>
+    <div class="right-col trio">
+      <div class="variant-img"><div class="variant-label">VENDE SOLA</div><img src="Ainnovation Adds/AD DOC1-01 — EL DATO (General)/doc1-01-img2-detalle.png" alt="D1-01 vende sola"></div>
+      <div class="variant-img"><div class="variant-label">LOS AI</div><img src="Ainnovation Adds/AD DOC1-01 — EL DATO (General)/_test-mascota-variantA-losai/doc1-01-variantA-losai.png" alt="D1-01 mascota"></div>
+      <div class="variant-img"><div class="variant-label">STOCK</div><img src="Ainnovation Adds/AD DOC1-01 — EL DATO (General)/_test-mascota-variantB-stock/doc1-01-img1-hero-stockmodel.png" alt="D1-01 stock"></div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div>D1-01 EL DATO</div>
+    <div class="center">VERTICAL GENERAL</div>
+    <div>04 / 29</div>
+  </div>
+</section>
+
+<!-- 5 · D1-02 -->
+<section class="slide">
+  <div class="brand-bar">
+    <div class="left">AINNOVATION</div>
+    <div class="center">AD 2 DE 19</div>
+    <div class="right">05 / 29</div>
+  </div>
+  <div class="body">
+    <div class="left-col">
+      <div class="ad-id">D1-02 · DOC1 #2</div>
+      <div class="ad-title">BELLEZA (Una Semana)</div>
+      <div class="vertical-tag">Vertical · BELLEZA · Mariana 28-42</div>
+      <div class="meta-row">
+        <div class="meta-item"><span class="label">Persona:</span><span class="value">Dueña salón / lash / uñas / spa</span></div>
+        <div class="meta-item"><span class="label">Tier:</span><span class="value">$1,999/mes</span></div>
+        <div class="meta-item"><span class="label">CTA:</span><span class="value">DEMO</span></div>
+      </div>
+      <blockquote class="hook">"184 mensajes · 23 citas · 7 recuperadas · 0 veces que la dueña tocó el teléfono"</blockquote>
+      <div class="var-block">
+        <div class="lbl">Variable que testea (vs D2-01 + D2-02)</div>
+        <div class="txt">Stats narrativos de transformación semanal — el "0" como focal point. La dueña no toca el teléfono.</div>
+      </div>
+      <div class="reading-grid">
+        <div class="reading-cell win">
+          <div class="lbl">Si gana</div>
+          <div class="txt">Mariana responde a desglose narrativo de su semana real, no a número absoluto.</div>
+          <div class="action">Acción: replicar formato narrativo a otros verticales con ticket bajo.</div>
+        </div>
+        <div class="reading-cell lose">
+          <div class="lbl">Si pierde</div>
+          <div class="txt">El stat narrativo no resuena. Los otros formatos belleza (D2-01 tabla o D2-02 hero number) tienen otra palanca.</div>
+          <div class="action">Acción: matar D1-02 a favor del ganador entre D2-01/D2-02. Mantener vertical.</div>
+        </div>
+      </div>
+    </div>
+    <div class="right-col trio">
+      <div class="variant-img"><div class="variant-label">VENDE SOLA</div><img src="Ainnovation Adds/AD DOC1-02 — BELLEZA (Una Semana)/doc1-02-img2-detalle.png" alt="D1-02 vende sola"></div>
+      <div class="variant-img"><div class="variant-label">LOS AI</div><img src="Ainnovation Adds/AD DOC1-02 — BELLEZA (Una Semana)/_test-mascota-variantA-losai/doc1-02-variantA-losai.png" alt="D1-02 mascota"></div>
+      <div class="variant-img"><div class="variant-label">STOCK</div><img src="Ainnovation Adds/AD DOC1-02 — BELLEZA (Una Semana)/_test-mascota-variantB-stock/doc1-02-variantB-stock.png" alt="D1-02 stock"></div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div>D1-02 BELLEZA UNA SEMANA</div>
+    <div class="center">VERTICAL BELLEZA</div>
+    <div>05 / 29</div>
+  </div>
+</section>
+
+<!-- 6 · D1-03 -->
+<section class="slide">
+  <div class="brand-bar">
+    <div class="left">AINNOVATION</div>
+    <div class="center">AD 3 DE 19</div>
+    <div class="right">06 / 29</div>
+  </div>
+  <div class="body">
+    <div class="left-col">
+      <div class="ad-id">D1-03 · DOC1 #3</div>
+      <div class="ad-title">RETAIL ALTO VOLUMEN</div>
+      <div class="vertical-tag">Vertical · RETAIL · Roberto 28-50</div>
+      <div class="meta-row">
+        <div class="meta-item"><span class="label">Persona:</span><span class="value">Comercio · 50-200 msgs/día</span></div>
+        <div class="meta-item"><span class="label">Tier:</span><span class="value">$1,999/mes</span></div>
+        <div class="meta-item"><span class="label">CTA:</span><span class="value">DEMO</span></div>
+      </div>
+      <blockquote class="hook">"150 entran. 12 te llegan. El resto es ruido. Tu solo cierras."</blockquote>
+      <div class="var-block">
+        <div class="lbl">Variable que testea (sin par directo)</div>
+        <div class="txt">Concepto FILTRO como hero. Reencuadra el problema: el dolor no es contestar rápido — es clasificar. Compara contra D1-01 en hombres 28-50.</div>
+      </div>
+      <div class="reading-grid">
+        <div class="reading-cell win">
+          <div class="lbl">Si gana a D1-01 en hombres 28-50</div>
+          <div class="txt">El reframing funcionó. Roberto piensa en clasificación, no en velocidad.</div>
+          <div class="action">Acción: cambiar pitch retail a "filtro inteligente". Sub-variantes por giro (motos, muebles, refacciones).</div>
+        </div>
+        <div class="reading-cell lose">
+          <div class="lbl">Si pierde a D1-01</div>
+          <div class="txt">Dolor real de Roberto NO es clasificar — probablemente "vender más" como outcome.</div>
+          <div class="action">Acción: cambiar pitch a outcome ("vendes 30% más sin contratar"). Matar concepto FILTRO.</div>
+        </div>
+      </div>
+    </div>
+    <div class="right-col trio">
+      <div class="variant-img"><div class="variant-label">VENDE SOLA</div><img src="Ainnovation Adds/AD DOC1-03 — RETAIL ALTO VOLUMEN/doc1-03-img1-hero.png" alt="D1-03 vende sola"></div>
+      <div class="variant-img"><div class="variant-label">LOS AI</div><img src="Ainnovation Adds/AD DOC1-03 — RETAIL ALTO VOLUMEN/_test-mascota-variantA-losai/doc1-03-variantA-losai.png" alt="D1-03 mascota"></div>
+      <div class="variant-img"><div class="variant-label">STOCK</div><img src="Ainnovation Adds/AD DOC1-03 — RETAIL ALTO VOLUMEN/_test-mascota-variantB-stock/doc1-03-variantB-stock.png" alt="D1-03 stock"></div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div>D1-03 RETAIL FILTRO</div>
+    <div class="center">VERTICAL RETAIL</div>
+    <div>06 / 29</div>
+  </div>
+</section>
+
+<!-- 7 · D1-04 -->
+<section class="slide">
+  <div class="brand-bar">
+    <div class="left">AINNOVATION</div>
+    <div class="center">AD 4 DE 19</div>
+    <div class="right">07 / 29</div>
+  </div>
+  <div class="body">
+    <div class="left-col">
+      <div class="ad-id">D1-04 · DOC1 #4</div>
+      <div class="ad-title">PACIENTE PERDIDA</div>
+      <div class="vertical-tag">Vertical · CLÍNICAS · Dra. Cynthia 30-55</div>
+      <div class="meta-row">
+        <div class="meta-item"><span class="label">Persona:</span><span class="value">Clínica · ticket $1K-15K</span></div>
+        <div class="meta-item"><span class="label">Tier:</span><span class="value">$1,999/mes</span></div>
+        <div class="meta-item"><span class="label">CTA:</span><span class="value">DEMO</span></div>
+      </div>
+      <blockquote class="hook">"8:00pm · 8:30pm · 9:00pm · La hora que pierde $15,000 cada noche."</blockquote>
+      <div class="var-block">
+        <div class="lbl">Variable que testea (vs D2-03)</div>
+        <div class="txt">Fear of loss con número concreto + timeline simple en 3 momentos. Mismo dolor que D2-03 pero formato minimalista.</div>
+      </div>
+      <div class="reading-grid">
+        <div class="reading-cell win">
+          <div class="lbl">Si gana a D2-03</div>
+          <div class="txt">Cynthia procesa rápido — el dolor del número en 3 momentos basta.</div>
+          <div class="action">Acción: replicar formato traffic-light a otros verticales ticket alto (abogados, contadores, vet).</div>
+        </div>
+        <div class="reading-cell lose">
+          <div class="lbl">Si pierde a D2-03</div>
+          <div class="txt">Las clínicas necesitan más detalle (forensia) que un número impacto.</div>
+          <div class="action">Acción: matar timeline simple. Estructura "autopsia detallada" para ticket alto.</div>
+        </div>
+      </div>
+    </div>
+    <div class="right-col duo">
+      <div class="variant-img"><div class="variant-label">VENDE SOLA</div><img src="Ainnovation Adds/AD DOC1-04 — PACIENTE PERDIDA/doc1-04-img1-hero.png" alt="D1-04 vende sola"></div>
+      <div class="variant-img"><div class="variant-label">LOS AI</div><img src="Ainnovation Adds/AD DOC1-04 — PACIENTE PERDIDA/_test-mascota-variantA-losai/doc1-04-variantA-losai.png" alt="D1-04 mascota"></div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div>D1-04 PACIENTE PERDIDA</div>
+    <div class="center">VERTICAL CLÍNICAS</div>
+    <div>07 / 29</div>
+  </div>
+</section>
+
+<!-- 8 · D1-05 -->
+<section class="slide">
+  <div class="brand-bar">
+    <div class="left">AINNOVATION</div>
+    <div class="center">AD 5 DE 19</div>
+    <div class="right">08 / 29</div>
+  </div>
+  <div class="body">
+    <div class="left-col">
+      <div class="ad-id">D1-05 · DOC1 #5</div>
+      <div class="ad-title">GHL · 1,000 Funciones</div>
+      <div class="vertical-tag">Vertical · GHL USERS · Luis 28-45</div>
+      <div class="meta-row">
+        <div class="meta-item"><span class="label">Persona:</span><span class="value">Ya paga GHL $97-$497 USD</span></div>
+        <div class="meta-item"><span class="label">Tier:</span><span class="value">Desde $1,999/mes</span></div>
+        <div class="meta-item"><span class="label">CTA:</span><span class="value">GHL → ghl_agent</span></div>
+      </div>
+      <blockquote class="hook">"1,000 funciones. Usas 6. No necesitas aprender más. Necesitas delegar."</blockquote>
+      <div class="var-block">
+        <div class="lbl">Variable que testea (vs D2-04 navaja suiza)</div>
+        <div class="txt">Culpa explícita — ataca el ego: estás desperdiciando lo que pagas.</div>
+      </div>
+      <div class="reading-grid">
+        <div class="reading-cell win">
+          <div class="lbl">Si gana</div>
+          <div class="txt">Luis admite la culpa y eso lo mueve a actuar. La confrontación funciona.</div>
+          <div class="action">Acción: bot script más corto para intent_ghl — saltar directo a propuesta.</div>
+        </div>
+        <div class="reading-cell lose">
+          <div class="lbl">Si pierde</div>
+          <div class="txt">Luis NO acepta culpa. La confrontación lo aleja. Necesita reframe aspiracional (D2-04).</div>
+          <div class="action">Acción: matar D1-05. Reescribir TODO el messaging GHL en clave aspiracional.</div>
+        </div>
+      </div>
+    </div>
+    <div class="right-col duo">
+      <div class="variant-img"><div class="variant-label">VENDE SOLA</div><img src="Ainnovation Adds/AD DOC1-05 — GHL/doc1-05-img1-hero.png" alt="D1-05 vende sola"></div>
+      <div class="variant-img"><div class="variant-label">LOS AI</div><img src="Ainnovation Adds/AD DOC1-05 — GHL/_test-mascota-variantA-losai/doc1-05-variantA-losai.png" alt="D1-05 mascota"></div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div>D1-05 GHL CULPA</div>
+    <div class="center">VERTICAL GHL USERS</div>
+    <div>08 / 29</div>
+  </div>
+</section>
+
+<!-- 9 · D1-06 -->
+<section class="slide">
+  <div class="brand-bar">
+    <div class="left">AINNOVATION</div>
+    <div class="center">AD 6 DE 19</div>
+    <div class="right">09 / 29</div>
+  </div>
+  <div class="body">
+    <div class="left-col">
+      <div class="ad-id">D1-06 · DOC1 #6</div>
+      <div class="ad-title">RESELLERS GHL · Carta Abierta</div>
+      <div class="vertical-tag">Vertical · RESELLERS · Partner deal</div>
+      <div class="meta-row">
+        <div class="meta-item"><span class="label">Persona:</span><span class="value">Reseller · 5-50 sub-accounts</span></div>
+        <div class="meta-item"><span class="label">Tier:</span><span class="value">Sin precio visible</span></div>
+        <div class="meta-item"><span class="label">CTA:</span><span class="value">AGENCIA → agencies_agent</span></div>
+      </div>
+      <blockquote class="hook">"Tus clientes no usan GHL. Cancelan. Somos el equipo técnico que ellos necesitan. Tú cobras."</blockquote>
+      <div class="var-block">
+        <div class="lbl">Variable que testea (vs D2-05 problema-enfocado)</div>
+        <div class="txt">Editorial/manifesto — conecta emocionalmente antes de proponer solución.</div>
+      </div>
+      <div class="reading-grid">
+        <div class="reading-cell win">
+          <div class="lbl">Si gana</div>
+          <div class="txt">Reseller necesita conexión emocional antes de comprar — "este sí entiende lo que vivo".</div>
+          <div class="action">Acción: partner deal requiere venta consultiva con narrativa. Más contenido editorial.</div>
+        </div>
+        <div class="reading-cell lose">
+          <div class="lbl">Si pierde</div>
+          <div class="txt">Reseller no quiere filosofía — es tiempo/dinero. D2-05 directo gana.</div>
+          <div class="action">Acción: aplicar tono directo a TODO el funnel partner. Matar manifesto.</div>
+        </div>
+      </div>
+    </div>
+    <div class="right-col duo">
+      <div class="variant-img"><div class="variant-label">VENDE SOLA</div><img src="Ainnovation Adds/AD DOC1-06 — RESELLERS GHL/doc1-06-img1-hero.png" alt="D1-06 vende sola"></div>
+      <div class="variant-img"><div class="variant-label">LOS AI</div><img src="Ainnovation Adds/AD DOC1-06 — RESELLERS GHL/_test-mascota-variantA-losai/doc1-06-variantA-losai.png" alt="D1-06 mascota"></div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div>D1-06 RESELLERS MANIFESTO</div>
+    <div class="center">VERTICAL RESELLERS</div>
+    <div>09 / 29</div>
+  </div>
+</section>
+
+<!-- 10 · D1-07 -->
+<section class="slide">
+  <div class="brand-bar">
+    <div class="left">AINNOVATION</div>
+    <div class="center">AD 7 DE 19</div>
+    <div class="right">10 / 29</div>
+  </div>
+  <div class="body">
+    <div class="left-col">
+      <div class="ad-id">D1-07 · DOC1 #7</div>
+      <div class="ad-title">AGENCIAS DE MARKETING</div>
+      <div class="vertical-tag">Vertical · AGENCIAS · Director creativo</div>
+      <div class="meta-row">
+        <div class="meta-item"><span class="label">Persona:</span><span class="value">Director agencia creativa</span></div>
+        <div class="meta-item"><span class="label">Tier:</span><span class="value">Desde $1,999/mes</span></div>
+        <div class="meta-item"><span class="label">CTA:</span><span class="value">PARTNER → agencies_agent</span></div>
+      </div>
+      <blockquote class="hook">"Tu agencia es creativa. Nosotros somos los datos. Backend técnico. Atribución real."</blockquote>
+      <div class="var-block">
+        <div class="lbl">Variable que testea (vs D2-06 dark tech pills)</div>
+        <div class="txt">Tono educativo / explicativo — posicionamiento: complementarios, no competencia.</div>
+      </div>
+      <div class="reading-grid">
+        <div class="reading-cell win">
+          <div class="lbl">Si gana</div>
+          <div class="txt">Las agencias necesitan que les expliquen primero — NO tienen vocabulario técnico interno.</div>
+          <div class="action">Acción: crear tier separado para agencias con pricing premium ($5K-15K/mes según volumen).</div>
+        </div>
+        <div class="reading-cell lose">
+          <div class="lbl">Si pierde</div>
+          <div class="txt">Las agencias responden a códigos técnicos (pixel, CAPI, UTMs). El club excluyente atrae más.</div>
+          <div class="action">Acción: contenido técnico-críptico (D2-06) gana. Matar tono educativo.</div>
+        </div>
+      </div>
+    </div>
+    <div class="right-col duo">
+      <div class="variant-img"><div class="variant-label">VENDE SOLA</div><img src="Ainnovation Adds/AD DOC1-07 — AGENCIAS DE MARKETING/doc1-07-img1-hero.png" alt="D1-07 vende sola"></div>
+      <div class="variant-img"><div class="variant-label">LOS AI</div><img src="Ainnovation Adds/AD DOC1-07 — AGENCIAS DE MARKETING/_test-mascota-variantA-losai/doc1-07-variantA-losai.png" alt="D1-07 mascota"></div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div>D1-07 AGENCIAS EDUCATIVO</div>
+    <div class="center">VERTICAL AGENCIAS</div>
+    <div>10 / 29</div>
+  </div>
+</section>
+
+<!-- 11 · D1-08 -->
+<section class="slide">
+  <div class="brand-bar">
+    <div class="left">AINNOVATION</div>
+    <div class="center">AD 8 DE 19</div>
+    <div class="right">11 / 29</div>
+  </div>
+  <div class="body">
+    <div class="left-col">
+      <div class="ad-id">D1-08 · DOC1 #8</div>
+      <div class="ad-title">INMOBILIARIA · 5 Vendedores</div>
+      <div class="vertical-tag">Vertical · INMOB-DIRECTOR · Alejandro 30-55</div>
+      <div class="meta-row">
+        <div class="meta-item"><span class="label">Persona:</span><span class="value">Director · 4-20 agentes</span></div>
+        <div class="meta-item"><span class="label">Tier:</span><span class="value">$4,999+/mes</span></div>
+        <div class="meta-item"><span class="label">CTA:</span><span class="value">INMOBILIARIA</span></div>
+      </div>
+      <blockquote class="hook">"5 vendedores. ¿Cuántos leads pierde cada uno? Este dashboard sí sabe."</blockquote>
+      <div class="var-block">
+        <div class="lbl">Variable que testea (vs D2-07 3 problemas)</div>
+        <div class="txt">Solución (dashboard) como hero — pregunta retórica → respuesta visual = la herramienta.</div>
+      </div>
+      <div class="reading-grid">
+        <div class="reading-cell win">
+          <div class="lbl">Si gana</div>
+          <div class="txt">Alejandro responde a ver la herramienta. Necesita "sí, exactamente eso quiero". 1 cierre = ROAS 12×.</div>
+          <div class="action">Acción: producir video demo del dashboard real. Crear tier "Inmobiliaria $9,999".</div>
+        </div>
+        <div class="reading-cell lose">
+          <div class="lbl">Si pierde</div>
+          <div class="txt">Director necesita diagnóstico antes de solución (D2-07 gana). Quiere identificar primero.</div>
+          <div class="action">Acción: estructura "3 dolores → 1 solución" para todos los ads premium.</div>
+        </div>
+      </div>
+    </div>
+    <div class="right-col duo">
+      <div class="variant-img"><div class="variant-label">VENDE SOLA</div><img src="Ainnovation Adds/AD DOC1-08 — INMOBILIARIA/doc1-08-img1-hero.png" alt="D1-08 vende sola"></div>
+      <div class="variant-img"><div class="variant-label">LOS AI</div><img src="Ainnovation Adds/AD DOC1-08 — INMOBILIARIA/_test-mascota-variantA-losai/doc1-08-variantA-losai.png" alt="D1-08 mascota"></div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div>D1-08 INMOB DASHBOARD</div>
+    <div class="center">VERTICAL INMOB-DIRECTOR</div>
+    <div>11 / 29</div>
+  </div>
+</section>
+
+<!-- 12 · D1-09 -->
+<section class="slide">
+  <div class="brand-bar">
+    <div class="left">AINNOVATION</div>
+    <div class="center">AD 9 DE 19</div>
+    <div class="right">12 / 29</div>
+  </div>
+  <div class="body">
+    <div class="left-col">
+      <div class="ad-id">D1-09 · DOC1 #9</div>
+      <div class="ad-title">STAGING · Portfolio Grid</div>
+      <div class="vertical-tag">Vertical · INMOB-AGENTE · Lead magnet</div>
+      <div class="meta-row">
+        <div class="meta-item"><span class="label">Persona:</span><span class="value">Agente individual</span></div>
+        <div class="meta-item"><span class="label">Tier:</span><span class="value">Gratis → $3K listing → $4,999/mes</span></div>
+        <div class="meta-item"><span class="label">CTA:</span><span class="value">(foto) → staging_agent</span></div>
+      </div>
+      <blockquote class="hook">"Manda una foto. Te la regresamos lista para vender. Gratis."</blockquote>
+      <div class="var-block">
+        <div class="lbl">Variable que testea (vs D2-08 before/after)</div>
+        <div class="txt">Portfolio (mostrar trabajo previo) como confianza. Cantidad de ejemplos = credibilidad.</div>
+      </div>
+      <div class="reading-grid">
+        <div class="reading-cell win">
+          <div class="lbl">Si gana (CPA por foto &lt;$200 + 20%+ pide info sistema)</div>
+          <div class="txt">Lead magnet validado. Funnel staging→sistema funciona.</div>
+          <div class="action">Acción: NUNCA matar. Replicar concepto a otros verticales (auditoría gratis para clínicas).</div>
+        </div>
+        <div class="reading-cell lose">
+          <div class="lbl">Si pierde a D2-08</div>
+          <div class="txt">El agente prefiere ver UN ejemplo dramático (before/after) que portfolio.</div>
+          <div class="action">Acción: matar portfolio grid. Mantener D2-08 visual.</div>
+        </div>
+      </div>
+    </div>
+    <div class="right-col">
+      <img src="Ainnovation Adds/AD DOC1-09 — STAGING/doc1-09-img1-hero.png" alt="D1-09">
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div>D1-09 STAGING PORTFOLIO</div>
+    <div class="center">VERTICAL INMOB-AGENTE</div>
+    <div>12 / 29</div>
+  </div>
+</section>
+
+<!-- 13 · D2-01 -->
+<section class="slide">
+  <div class="brand-bar">
+    <div class="left">AINNOVATION</div>
+    <div class="center">AD 10 DE 19</div>
+    <div class="right">13 / 29</div>
+  </div>
+  <div class="body">
+    <div class="left-col">
+      <div class="ad-id">D2-01 · DOC2 #1</div>
+      <div class="ad-title">BELLEZA · Tabla Comparativa</div>
+      <div class="vertical-tag">Vertical · BELLEZA · Mariana 28-42</div>
+      <div class="meta-row">
+        <div class="meta-item"><span class="label">Persona:</span><span class="value">Dueña salón</span></div>
+        <div class="meta-item"><span class="label">Tier:</span><span class="value">$1,999/mes</span></div>
+        <div class="meta-item"><span class="label">CTA:</span><span class="value">DEMO</span></div>
+      </div>
+      <blockquote class="hook">"ANTES: contestaba entre clienta y clienta · HOY: sistema contesta en 60 seg"</blockquote>
+      <div class="var-block">
+        <div class="lbl">Variable que testea (vs D1-02 + D2-02)</div>
+        <div class="txt">Comparación visual antes/después — transformación lado-a-lado en duotone navy/magenta.</div>
+      </div>
+      <div class="reading-grid">
+        <div class="reading-cell win">
+          <div class="lbl">Si gana</div>
+          <div class="txt">Mariana responde a transformación visual antes/después. La narrativa de cambio cierra.</div>
+          <div class="action">Acción: replicar formato a clínicas y retail. Crear más ads con estructura ✗/✓.</div>
+        </div>
+        <div class="reading-cell lose">
+          <div class="lbl">Si pierde</div>
+          <div class="txt">El antes/después no resuena. Mariana prefiere stats narrativos (D1-02) o número masivo (D2-02).</div>
+          <div class="action">Acción: matar D2-01. Mantener vertical con el formato ganador.</div>
+        </div>
+      </div>
+    </div>
+    <div class="right-col duo">
+      <div class="variant-img"><div class="variant-label">VENDE SOLA</div><img src="Ainnovation Adds/AD DOC2-01 — TABLA COMPARATIVA/doc2-01-img2-detalle.png" alt="D2-01 vende sola"></div>
+      <div class="variant-img"><div class="variant-label">LOS AI</div><img src="Ainnovation Adds/AD DOC2-01 — TABLA COMPARATIVA/_test-mascota-variantA-losai/doc2-01-variantA-losai.png" alt="D2-01 mascota"></div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div>D2-01 BELLEZA TABLA</div>
+    <div class="center">VERTICAL BELLEZA</div>
+    <div>13 / 29</div>
+  </div>
+</section>
+
+<!-- 14 · D2-02 -->
+<section class="slide">
+  <div class="brand-bar">
+    <div class="left">AINNOVATION</div>
+    <div class="center">AD 11 DE 19</div>
+    <div class="right">14 / 29</div>
+  </div>
+  <div class="body">
+    <div class="left-col">
+      <div class="ad-id">D2-02 · DOC2 #2</div>
+      <div class="ad-title">BELLEZA · 4,827 Mensajes</div>
+      <div class="vertical-tag">Vertical · BELLEZA · Mariana 28-42</div>
+      <div class="meta-row">
+        <div class="meta-item"><span class="label">Persona:</span><span class="value">Dueña salón</span></div>
+        <div class="meta-item"><span class="label">Tier:</span><span class="value">$1,999/mes</span></div>
+        <div class="meta-item"><span class="label">CTA:</span><span class="value">DEMO</span></div>
+      </div>
+      <blockquote class="hook">"4,827 mensajes. Un salón. Un mes. Cada uno contestado."</blockquote>
+      <div class="var-block">
+        <div class="lbl">Variable que testea (vs D1-02 + D2-01)</div>
+        <div class="txt">Magnitud bruta sin contexto adicional. Solo el número masivo como hero.</div>
+      </div>
+      <div class="reading-grid">
+        <div class="reading-cell win">
+          <div class="lbl">Si gana</div>
+          <div class="txt">Mariana responde a magnitud bruta. El número grande la sorprende y convierte sin necesitar contexto.</div>
+          <div class="action">Acción: reformatear todos los entry $1,999 con número hero único.</div>
+        </div>
+        <div class="reading-cell lose">
+          <div class="lbl">Si pierde</div>
+          <div class="txt">El número solo sin contexto no resuena. Mariana necesita contexto narrativo o comparativo.</div>
+          <div class="action">Acción: matar D2-02. Hero number sin contexto no es la palanca.</div>
+        </div>
+      </div>
+    </div>
+    <div class="right-col duo">
+      <div class="variant-img"><div class="variant-label">VENDE SOLA</div><img src="Ainnovation Adds/AD DOC2-02 — 4,827 MENSAJES/doc2-02-img1-hero.png" alt="D2-02 vende sola"></div>
+      <div class="variant-img"><div class="variant-label">LOS AI</div><img src="Ainnovation Adds/AD DOC2-02 — 4,827 MENSAJES/_test-mascota-variantA-losai/doc2-02-variantA-losai.png" alt="D2-02 mascota"></div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div>D2-02 BELLEZA NÚMERO HERO</div>
+    <div class="center">VERTICAL BELLEZA</div>
+    <div>14 / 29</div>
+  </div>
+</section>
+
+<!-- 15 · D2-03 -->
+<section class="slide">
+  <div class="brand-bar">
+    <div class="left">AINNOVATION</div>
+    <div class="center">AD 12 DE 19</div>
+    <div class="right">15 / 29</div>
+  </div>
+  <div class="body">
+    <div class="left-col">
+      <div class="ad-id">D2-03 · DOC2 #3</div>
+      <div class="ad-title">PACIENTE PERDIDA · Autopsia</div>
+      <div class="vertical-tag">Vertical · CLÍNICAS · Dra. Cynthia 30-55</div>
+      <div class="meta-row">
+        <div class="meta-item"><span class="label">Persona:</span><span class="value">Clínica · ticket alto</span></div>
+        <div class="meta-item"><span class="label">Tier:</span><span class="value">$1,999/mes</span></div>
+        <div class="meta-item"><span class="label">CTA:</span><span class="value">DEMO</span></div>
+      </div>
+      <blockquote class="hook">"Alguien va a la competencia. A las 8:32pm. Forensia de una venta que no hiciste."</blockquote>
+      <div class="var-block">
+        <div class="lbl">Variable que testea (vs D1-04 timeline simple)</div>
+        <div class="txt">Forensia detallada vs timeline simple — mismo dolor, más profundidad narrativa, formato investigativo.</div>
+      </div>
+      <div class="reading-grid">
+        <div class="reading-cell win">
+          <div class="lbl">Si gana</div>
+          <div class="txt">Cynthia necesita procesar el dolor con detalle. La forensia construye urgencia mayor que el número solo.</div>
+          <div class="action">Acción: replicar formato "autopsia" a verticales premium (dental, estética, abogados, contadores).</div>
+        </div>
+        <div class="reading-cell lose">
+          <div class="lbl">Si pierde a D1-04</div>
+          <div class="txt">El número solo basta. Más detalle satura.</div>
+          <div class="action">Acción: matar D2-03. Mantener D1-04 minimalista para clínicas.</div>
+        </div>
+      </div>
+    </div>
+    <div class="right-col duo">
+      <div class="variant-img"><div class="variant-label">VENDE SOLA</div><img src="Ainnovation Adds/AD DOC2-03 — PACIENTE PERDIDA/doc2-03-img2-detalle.png" alt="D2-03 vende sola"></div>
+      <div class="variant-img"><div class="variant-label">LOS AI</div><img src="Ainnovation Adds/AD DOC2-03 — PACIENTE PERDIDA/_test-mascota-variantA-losai/doc2-03-variantA-losai.png" alt="D2-03 mascota"></div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div>D2-03 CLÍNICAS AUTOPSIA</div>
+    <div class="center">VERTICAL CLÍNICAS</div>
+    <div>15 / 29</div>
+  </div>
+</section>
+
+<!-- 16 · D2-04 -->
+<section class="slide">
+  <div class="brand-bar">
+    <div class="left">AINNOVATION</div>
+    <div class="center">AD 13 DE 19</div>
+    <div class="right">16 / 29</div>
+  </div>
+  <div class="body">
+    <div class="left-col">
+      <div class="ad-id">D2-04 · DOC2 #4</div>
+      <div class="ad-title">GHL · Navaja Suiza</div>
+      <div class="vertical-tag">Vertical · GHL USERS · Luis 28-45</div>
+      <div class="meta-row">
+        <div class="meta-item"><span class="label">Persona:</span><span class="value">Ya paga GHL</span></div>
+        <div class="meta-item"><span class="label">Tier:</span><span class="value">Desde $1,999/mes</span></div>
+        <div class="meta-item"><span class="label">CTA:</span><span class="value">GHL → ghl_agent</span></div>
+      </div>
+      <blockquote class="hook">"GHL es la navaja suiza. Falta el cuchillero. Tú tienes la herramienta. Nosotros le sacamos filo."</blockquote>
+      <div class="var-block">
+        <div class="lbl">Variable que testea (vs D1-05 culpa)</div>
+        <div class="txt">Metáfora aspiracional — reframe: no es tu culpa, es que falta el operador.</div>
+      </div>
+      <div class="reading-grid">
+        <div class="reading-cell win">
+          <div class="lbl">Si gana</div>
+          <div class="txt">Luis NO acepta culpa pero acepta metáfora porque le quita responsabilidad. El reframe vence.</div>
+          <div class="action">Acción: reescribir TODO el messaging GHL en clave aspiracional. Metáforas en otros verticales tech-savvy.</div>
+        </div>
+        <div class="reading-cell lose">
+          <div class="lbl">Si pierde</div>
+          <div class="txt">La culpa funciona (D1-05). Luis sí siente que desperdicia GHL.</div>
+          <div class="action">Acción: matar D2-04. Mantener tono confrontacional.</div>
+        </div>
+      </div>
+    </div>
+    <div class="right-col duo">
+      <div class="variant-img"><div class="variant-label">VENDE SOLA</div><img src="Ainnovation Adds/AD DOC2-04 — GHL CON EQUIPO EXPERTO/doc2-04-img2-detalle.png" alt="D2-04 vende sola"></div>
+      <div class="variant-img"><div class="variant-label">LOS AI</div><img src="Ainnovation Adds/AD DOC2-04 — GHL CON EQUIPO EXPERTO/_test-mascota-variantA-losai/doc2-04-variantA-losai.png" alt="D2-04 mascota"></div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div>D2-04 GHL NAVAJA SUIZA</div>
+    <div class="center">VERTICAL GHL USERS</div>
+    <div>16 / 29</div>
+  </div>
+</section>
+
+<!-- 17 · D2-05 -->
+<section class="slide">
+  <div class="brand-bar">
+    <div class="left">AINNOVATION</div>
+    <div class="center">AD 14 DE 19</div>
+    <div class="right">17 / 29</div>
+  </div>
+  <div class="body">
+    <div class="left-col">
+      <div class="ad-id">D2-05 · DOC2 #5</div>
+      <div class="ad-title">RESELLERS · Problema-Enfocado</div>
+      <div class="vertical-tag">Vertical · RESELLERS · Partner deal</div>
+      <div class="meta-row">
+        <div class="meta-item"><span class="label">Persona:</span><span class="value">Reseller · 5-50 sub-accounts</span></div>
+        <div class="meta-item"><span class="label">Tier:</span><span class="value">Sin precio visible</span></div>
+        <div class="meta-item"><span class="label">CTA:</span><span class="value">AGENCIA → agencies_agent</span></div>
+      </div>
+      <blockquote class="hook">"Tu problema · Nuestra solución. Tus clientes cancelan. Nosotros los retenemos."</blockquote>
+      <div class="var-block">
+        <div class="lbl">Variable que testea (vs D1-06 manifesto)</div>
+        <div class="txt">Problema-solución directo. Sin filosofía. Diagnóstico → tratamiento.</div>
+      </div>
+      <div class="reading-grid">
+        <div class="reading-cell win">
+          <div class="lbl">Si gana</div>
+          <div class="txt">Reseller no quiere filosofía — es tiempo/dinero. Diagnóstico → solución → cierre.</div>
+          <div class="action">Acción: aplicar tono directo a TODO el funnel partner. Matar manifesto.</div>
+        </div>
+        <div class="reading-cell lose">
+          <div class="lbl">Si pierde</div>
+          <div class="txt">El manifesto crea conexión emocional necesaria para confiar (D1-06 gana).</div>
+          <div class="action">Acción: el partner deal requiere venta consultiva con narrativa.</div>
+        </div>
+      </div>
+    </div>
+    <div class="right-col duo">
+      <div class="variant-img"><div class="variant-label">VENDE SOLA</div><img src="Ainnovation Adds/AD DOC2-05 — RESELLERS GHL/doc2-05-img2-detalle.png" alt="D2-05 vende sola"></div>
+      <div class="variant-img"><div class="variant-label">LOS AI</div><img src="Ainnovation Adds/AD DOC2-05 — RESELLERS GHL/_test-mascota-variantA-losai/doc2-05-variantA-losai.png" alt="D2-05 mascota"></div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div>D2-05 RESELLERS DIRECTO</div>
+    <div class="center">VERTICAL RESELLERS</div>
+    <div>17 / 29</div>
+  </div>
+</section>
+
+<!-- 18 · D2-06 -->
+<section class="slide">
+  <div class="brand-bar">
+    <div class="left">AINNOVATION</div>
+    <div class="center">AD 15 DE 19</div>
+    <div class="right">18 / 29</div>
+  </div>
+  <div class="body">
+    <div class="left-col">
+      <div class="ad-id">D2-06 · DOC2 #6</div>
+      <div class="ad-title">AGENCIAS · Dark Tech Pills</div>
+      <div class="vertical-tag">Vertical · AGENCIAS · Director creativo</div>
+      <div class="meta-row">
+        <div class="meta-item"><span class="label">Persona:</span><span class="value">Director agencia</span></div>
+        <div class="meta-item"><span class="label">Tier:</span><span class="value">Desde $1,999/mes</span></div>
+        <div class="meta-item"><span class="label">CTA:</span><span class="value">PARTNER → agencies_agent</span></div>
+      </div>
+      <blockquote class="hook">"Pixel · CAPI · UTMs · Dashboards · Tú. Stack técnico para agencias que quieren cobrar más."</blockquote>
+      <div class="var-block">
+        <div class="lbl">Variable que testea (vs D1-07 educativo)</div>
+        <div class="txt">Lenguaje técnico-críptico — no explica, asume conocimiento. Filtra a quien sí entiende.</div>
+      </div>
+      <div class="reading-grid">
+        <div class="reading-cell win">
+          <div class="lbl">Si gana</div>
+          <div class="txt">Las agencias responden a códigos técnicos — saber el vocabulario es señal de pertenencia al club.</div>
+          <div class="action">Acción: crear más contenido dirigido a CMOs con lenguaje técnico. Matar tono educativo.</div>
+        </div>
+        <div class="reading-cell lose">
+          <div class="lbl">Si pierde</div>
+          <div class="txt">Las agencias necesitan que les expliquen primero (D1-07 gana). NO tienen vocabulario técnico interno.</div>
+          <div class="action">Acción: tono educativo es el camino. Matar dark tech pills.</div>
+        </div>
+      </div>
+    </div>
+    <div class="right-col duo">
+      <div class="variant-img"><div class="variant-label">VENDE SOLA</div><img src="Ainnovation Adds/AD DOC2-06 — AGENCIAS DE MARKETING/doc2-06-img1-hero.png" alt="D2-06 vende sola"></div>
+      <div class="variant-img"><div class="variant-label">LOS AI</div><img src="Ainnovation Adds/AD DOC2-06 — AGENCIAS DE MARKETING/_test-mascota-variantA-losai/doc2-06-variantA-losai.png" alt="D2-06 mascota"></div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div>D2-06 AGENCIAS DARK TECH</div>
+    <div class="center">VERTICAL AGENCIAS</div>
+    <div>18 / 29</div>
+  </div>
+</section>
+
+<!-- 19 · D2-07 -->
+<section class="slide">
+  <div class="brand-bar">
+    <div class="left">AINNOVATION</div>
+    <div class="center">AD 16 DE 19</div>
+    <div class="right">19 / 29</div>
+  </div>
+  <div class="body">
+    <div class="left-col">
+      <div class="ad-id">D2-07 · DOC2 #7</div>
+      <div class="ad-title">INMOBILIARIA · 3 Problemas</div>
+      <div class="vertical-tag">Vertical · INMOB-DIRECTOR · Alejandro 30-55</div>
+      <div class="meta-row">
+        <div class="meta-item"><span class="label">Persona:</span><span class="value">Director · 4-20 agentes</span></div>
+        <div class="meta-item"><span class="label">Tier:</span><span class="value">$4,999+/mes</span></div>
+        <div class="meta-item"><span class="label">CTA:</span><span class="value">INMOBILIARIA</span></div>
+      </div>
+      <blockquote class="hook">"No tienes visibilidad. Ni seguimiento. Ni datos. Un sistema resuelve los 3."</blockquote>
+      <div class="var-block">
+        <div class="lbl">Variable que testea (vs D1-08 dashboard)</div>
+        <div class="txt">Diagnóstico antes que solución — 3 dolores explícitos enumerados → solución condensada al final.</div>
+      </div>
+      <div class="reading-grid">
+        <div class="reading-cell win">
+          <div class="lbl">Si gana</div>
+          <div class="txt">Alejandro necesita que le digan QUÉ está mal antes de QUÉ comprar. Auto-identificación precede compra.</div>
+          <div class="action">Acción: estructura "3 dolores → 1 solución" para todos los ads premium. Matar D1-08.</div>
+        </div>
+        <div class="reading-cell lose">
+          <div class="lbl">Si pierde</div>
+          <div class="txt">Director quiere ver el dashboard funcionando, no le interesa el diagnóstico (D1-08 gana).</div>
+          <div class="action">Acción: producir video demo del dashboard real. Matar D2-07.</div>
+        </div>
+      </div>
+    </div>
+    <div class="right-col trio">
+      <div class="variant-img"><div class="variant-label">VENDE SOLA</div><img src="Ainnovation Adds/AD DOC2-07 — INMOBILIARIA/doc2-07-img1-hero.png" alt="D2-07 vende sola"></div>
+      <div class="variant-img"><div class="variant-label">LOS AI</div><img src="Ainnovation Adds/AD DOC2-07 — INMOBILIARIA/_test-mascota-variantA-losai/doc2-07-variantA-losai.png" alt="D2-07 mascota"></div>
+      <div class="variant-img"><div class="variant-label">STOCK</div><img src="Ainnovation Adds/AD DOC2-07 — INMOBILIARIA/_test-mascota-variantB-stock/doc2-07-variantB-stock.png" alt="D2-07 stock"></div>
+    </div>
+  <div class="footer-bar">
+    <div>D2-07 INMOB DIAGNÓSTICO</div>
+    <div class="center">VERTICAL INMOB-DIRECTOR</div>
+    <div>19 / 29</div>
+  </div>
+</section>
+
+<!-- 20 · D2-08 -->
+<section class="slide">
+  <div class="brand-bar">
+    <div class="left">AINNOVATION</div>
+    <div class="center">AD 17 DE 19</div>
+    <div class="right">20 / 29</div>
+  </div>
+  <div class="body">
+    <div class="left-col">
+      <div class="ad-id">D2-08 · DOC2 #8</div>
+      <div class="ad-title">STAGING AI · Before/After</div>
+      <div class="vertical-tag">Vertical · INMOB-AGENTE · Lead magnet</div>
+      <div class="meta-row">
+        <div class="meta-item"><span class="label">Persona:</span><span class="value">Agente individual</span></div>
+        <div class="meta-item"><span class="label">Tier:</span><span class="value">Gratis → $3K listing → $4,999/mes</span></div>
+        <div class="meta-item"><span class="label">CTA:</span><span class="value">(foto) → staging_agent</span></div>
+      </div>
+      <blockquote class="hook">"Antes / Después. En 24 horas. Gratis."</blockquote>
+      <div class="var-block">
+        <div class="lbl">Variable que testea (vs D1-09 portfolio)</div>
+        <div class="txt">Promesa visible (transformación de UNA propiedad). Calidad de UN ejemplo vs cantidad de ejemplos.</div>
+      </div>
+      <div class="reading-grid">
+        <div class="reading-cell win">
+          <div class="lbl">Si gana</div>
+          <div class="txt">El agente prefiere ver UN ejemplo dramático que portfolio de muchos. Calidad sobre cantidad.</div>
+          <div class="action">Acción: formato before/after para todos los lead magnets futuros. Matar portfolio.</div>
+        </div>
+        <div class="reading-cell lose">
+          <div class="lbl">Si pierde</div>
+          <div class="txt">El agente necesita ver trabajo previo de OTROS para confiar (D1-09 portfolio gana).</div>
+          <div class="action">Acción: construir banco de casos reales con permisos de uso. Matar D2-08.</div>
+        </div>
+      </div>
+    </div>
+    <div class="right-col">
+      <img src="Ainnovation Adds/AD DOC2-08 — STAGING AI GRATIS/doc2-08-img1-hero.png" alt="D2-08">
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div>D2-08 STAGING BEFORE/AFTER</div>
+    <div class="center">VERTICAL INMOB-AGENTE</div>
+    <div>20 / 29</div>
+  </div>
+</section>
+
+<!-- 21 · D2-09 -->
+<section class="slide">
+  <div class="brand-bar">
+    <div class="left">AINNOVATION</div>
+    <div class="center">AD 18 DE 19</div>
+    <div class="right">21 / 29</div>
+  </div>
+  <div class="body">
+    <div class="left-col">
+      <div class="ad-id">D2-09 · DOC2 #9</div>
+      <div class="ad-title">RETARGETING UNIVERSAL</div>
+      <div class="vertical-tag">Vertical · RETARGETING · Pool acumulado</div>
+      <div class="meta-row">
+        <div class="meta-item"><span class="label">Persona:</span><span class="value">Visitante previo</span></div>
+        <div class="meta-item"><span class="label">Tier:</span><span class="value">Dual: $1,999 / lead magnet</span></div>
+        <div class="meta-item"><span class="label">CTA:</span><span class="value">LISTO o AUDITORIA</span></div>
+      </div>
+      <blockquote class="hook">"Ya nos viste. Volviste. LISTO=$1,999 · AUDITORIA=20 capturas, te decimos qué arreglar gratis"</blockquote>
+      <div class="var-block">
+        <div class="lbl">Variable que testea (CTA dual interno)</div>
+        <div class="txt">Recordatorio simple vs lead magnet auditoría — ¿qué necesita el lead que no convirtió: empuje o nuevo valor?</div>
+      </div>
+      <div class="reading-grid">
+        <div class="reading-cell win">
+          <div class="lbl">Si LISTO &gt; AUDITORIA</div>
+          <div class="txt">Pool retargeted solo necesitaba un empujón. Primera exposición les bastó, faltaba urgencia.</div>
+          <div class="action">Acción: mantener LISTO como CTA principal.</div>
+        </div>
+        <div class="reading-cell lose">
+          <div class="lbl">Si AUDITORIA &gt; LISTO</div>
+          <div class="txt">Pool necesita validación adicional — primera exposición no fue suficiente.</div>
+          <div class="action">Acción: convertir AUDITORIA en lead magnet permanente. Más entregables gratis.</div>
+        </div>
+      </div>
+    </div>
+    <div class="right-col duo">
+      <div class="variant-img"><div class="variant-label">VENDE SOLA</div><img src="Ainnovation Adds/AD DOC2-09 — RETARGETING UNIVERSAL/doc2-09-img1-hero.png" alt="D2-09 vende sola"></div>
+      <div class="variant-img"><div class="variant-label">LOS AI</div><img src="Ainnovation Adds/AD DOC2-09 — RETARGETING UNIVERSAL/_test-mascota-variantA-losai/doc2-09-variantA-losai.png" alt="D2-09 mascota"></div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div>D2-09 RETARGETING</div>
+    <div class="center">VERTICAL RETARGETING</div>
+    <div>21 / 29</div>
+  </div>
+</section>
+
+<!-- 22 · D2-10 -->
+<section class="slide">
+  <div class="brand-bar">
+    <div class="left">AINNOVATION</div>
+    <div class="center">AD 19 DE 19</div>
+    <div class="right">22 / 29</div>
+  </div>
+  <div class="body">
+    <div class="left-col">
+      <div class="ad-id">D2-10 · DOC2 #10</div>
+      <div class="ad-title">SISTEMA COMPLETO $4,999</div>
+      <div class="vertical-tag">Vertical · PYME PREMIUM · Test de precio</div>
+      <div class="meta-row">
+        <div class="meta-item"><span class="label">Persona:</span><span class="value">PyME 5-30 empleados</span></div>
+        <div class="meta-item"><span class="label">Tier:</span><span class="value">$4,999/mes directo</span></div>
+        <div class="meta-item"><span class="label">CTA:</span><span class="value">SISTEMA</span></div>
+      </div>
+      <blockquote class="hook">"Contestar WhatsApp es solo el principio. ¿Cuántos leads llegaron? ¿Cuántos compraron? Si no sabes, no tienes sistema."</blockquote>
+      <div class="var-block">
+        <div class="lbl">Variable que testea (sin par directo)</div>
+        <div class="txt">Test puro de precio premium directo — ¿existe el comprador que paga $4,999 en frío sin entry $1,999?</div>
+      </div>
+      <div class="reading-grid">
+        <div class="reading-cell win">
+          <div class="lbl">Si cierra 1-2 clientes en 6 sem</div>
+          <div class="txt">Existe comprador premium directo, pool chico pero ROAS alto.</div>
+          <div class="action">Acción: mantener budget bajo (5%). Crear más variantes premium verticalizadas.</div>
+        </div>
+        <div class="reading-cell lose">
+          <div class="lbl">Si NO cierra ningún cliente en frío</div>
+          <div class="txt">Path real es entry $1,999 → upgrade orgánico tras 30-60 días.</div>
+          <div class="action">Acción: matar D2-10. Mover mensaje "Sistema Completo" a email para clientes activos.</div>
+        </div>
+      </div>
+    </div>
+    <div class="right-col trio">
+      <div class="variant-img"><div class="variant-label">VENDE SOLA</div><img src="Ainnovation Adds/AD DOC2-10 — SISTEMA COMPLETO 4999/doc2-10-img1-hero.png" alt="D2-10 vende sola"></div>
+      <div class="variant-img"><div class="variant-label">LOS AI</div><img src="Ainnovation Adds/AD DOC2-10 — SISTEMA COMPLETO 4999/_test-mascota-variantA-losai/doc2-10-variantA-losai.png" alt="D2-10 mascota"></div>
+      <div class="variant-img"><div class="variant-label">STOCK</div><img src="Ainnovation Adds/AD DOC2-10 — SISTEMA COMPLETO 4999/_test-mascota-variantB-stock/doc2-10-variantB-stock.png" alt="D2-10 stock"></div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div>D2-10 SISTEMA $4,999</div>
+    <div class="center">VERTICAL PREMIUM</div>
+    <div>22 / 29</div>
+  </div>
+</section>
+
+<!-- 23 · TEST MASCOTA A/B/C — EJECUTADO -->
+<section class="slide">
+  <div class="brand-bar">
+    <div class="left">AINNOVATION</div>
+    <div class="center">CAPA ADICIONAL · TEST MASCOTA · EJECUTADO</div>
+    <div class="right">23 / 29</div>
+  </div>
+  <div class="body full">
+    <div class="left-col">
+      <div class="eyebrow">Variable transversal · del piloto al rollout</div>
+      <h2 class="section">Test mascota A/B/C — ejecutado en 16/19 ads en una tarde</h2>
+      <p class="body-copy" style="margin-bottom: 18px;">
+        El plan original era 4 ads piloto (D1-01, D1-02, D1-03, D2-10). El batch escaló a <strong>17 de 19 ads con variante mascota A · Los AI</strong> + <strong>5 ads con variante stock B</strong>. D1-09 STAGING quedó fuera (el grid 2x2 de fotos before/after ya es el visual). D1-06 (CARTA ABIERTA op-ed) re-generado con el HighLevel logo big multicolor para que cualquier reseller de GHL se reconozca al primer glance. Round 1 lanza con el test completo.
+      </p>
+      <table class="specs">
+        <thead><tr>
+          <th>Variante</th>
+          <th>Visual hero</th>
+          <th>Status producción</th>
+          <th>Pregunta que responde</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td><strong style="color: var(--magenta);">A · Los AI</strong></td>
+            <td>Letras A&amp;I del wordmark vivas con shenanigans contextuales por ad (broom, magnifying glass, paint roller, fishing net, swiss army knife, etc.)</td>
+            <td><strong style="color: var(--magenta);">17/19 generados</strong> · pendiente D2-08</td>
+            <td>¿Construir distinctive brand asset propio vs commodity visual stock?</td>
+          </tr>
+          <tr>
+            <td><strong style="color: var(--magenta);">B · Stock</strong></td>
+            <td>Mujer mexicana 24-36, editorial commercial stock photo (Getty/Adobe Stock tier), lateral right, brand-color background</td>
+            <td><strong style="color: var(--magenta);">4/4 piloto generados</strong></td>
+            <td>¿Mercado MX prefiere familiaridad humana sobre mascota corporativa?</td>
+          </tr>
+          <tr>
+            <td><strong style="color: var(--magenta);">C · Control</strong></td>
+            <td>Sin persona — el ad original brutalist con wavy pattern decorativo</td>
+            <td><strong style="color: var(--magenta);">19/19 existentes</strong></td>
+            <td>¿El copy se vende solo sin ancla visual humana ni de marca?</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="body-copy" style="margin-top: 18px;">
+        <strong>Sizing calibrado por densidad de texto:</strong> ads text-heavy (op-ed D1-06, autopsia D2-03, navaja D2-04, bandas D2-05, dark tech D2-06) → mascotas <strong>TINY ~320px</strong> margin/corner. Ads text-medium → <strong>MEDIUM ~440px</strong>. Ads visual hero (D1-01, D2-02) → <strong>LARGE ~500px</strong>. La mascota nunca compite con el copy.
+      </p>
+      <p class="body-copy dim" style="margin-top: 12px;">
+        Los AI son el primer distinctive brand asset propio de Ainnovation. Si A gana en mayoría, validamos inversión en banco de poses ilustradas para post-Ronda 1. Si B gana, política visual humana. Si C gana, mantener brutalist. Múltiples ganadores por cluster son lo esperado — eso revela política visual segmentada por buyer profile.
+      </p>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div>SECCIÓN 4</div>
+    <div class="center">TEST MASCOTA EJECUTADO</div>
+    <div>23 / 29</div>
+  </div>
+</section>
+
+<!-- 24 · COMPARACIÓN A/B/C · D1-02 BELLEZA -->
+<section class="slide">
+  <div class="brand-bar">
+    <div class="left">AINNOVATION</div>
+    <div class="center">COMPARACIÓN A/B/C · D1-02 BELLEZA</div>
+    <div class="right">25 / 29</div>
+  </div>
+  <div class="body full">
+    <div class="left-col">
+      <div class="eyebrow">Una sola variable cambia · mismo copy · mismo background</div>
+      <h2 class="section">Esto es lo que el público mexicano va a evaluar</h2>
+      <p class="body-copy dim" style="margin-bottom: 14px;">
+        D1-02 BELLEZA es el cluster más limpio para visualizar el test. Los 3 ads tienen copy idéntico, layout idéntico, magenta idéntico. Lo único que cambia es la zona decorativa bottom: Los AI con shenanigan, mujer atractiva stock, o wavy pattern original.
+      </p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; align-items: start;">
+        <div style="text-align: center;">
+          <div style="background: var(--magenta); color: white; padding: 8px 12px; font-weight: 700; font-size: 14px; letter-spacing: 0.1em; margin-bottom: 8px;">A · LOS AI</div>
+          <img src="Ainnovation Adds/AD DOC1-02 — BELLEZA (Una Semana)/_test-mascota-variantA-losai/doc1-02-variantA-losai.png" alt="D1-02 mascota" style="width: 100%; border: 2px solid var(--magenta);">
+          <div style="margin-top: 10px; font-size: 13px; line-height: 1.4; color: rgba(255,255,255,0.7); text-align: left;">A barre el salón de noche, I responde clientas con corazón ♥ y agenda. Reflejan "0 veces que la dueña tocó el teléfono".</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="background: var(--magenta); color: white; padding: 8px 12px; font-weight: 700; font-size: 14px; letter-spacing: 0.1em; margin-bottom: 8px;">B · STOCK</div>
+          <img src="Ainnovation Adds/AD DOC1-02 — BELLEZA (Una Semana)/_test-mascota-variantB-stock/doc1-02-variantB-stock.png" alt="D1-02 stock" style="width: 100%; border: 2px solid var(--magenta);">
+          <div style="margin-top: 10px; font-size: 13px; line-height: 1.4; color: rgba(255,255,255,0.7); text-align: left;">Mujer mexicana 24-30, editorial commercial stock photo Vogue beauty tier, lateral right, magenta brand background.</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="background: var(--magenta); color: white; padding: 8px 12px; font-weight: 700; font-size: 14px; letter-spacing: 0.1em; margin-bottom: 8px;">C · CONTROL</div>
+          <img src="Ainnovation Adds/AD DOC1-02 — BELLEZA (Una Semana)/doc1-02-img1-hero.png" alt="D1-02 control" style="width: 100%; border: 2px solid var(--magenta);">
+          <div style="margin-top: 10px; font-size: 13px; line-height: 1.4; color: rgba(255,255,255,0.7); text-align: left;">El ad original brutalist sin persona ni mascota. Wavy pattern decorativo en bottom. Lo que ya existe.</div>
+        </div>
+      </div>
+      <p class="body-copy" style="margin-top: 18px;">
+        <strong>La pregunta operacional:</strong> ¿qué versión hace que la dueña de salón en Cancún se detenga en su scroll? La respuesta no es opinión — es CTR + cost per lead + close rate por variante. Round 1 dará la respuesta en sem 3-4.
+      </p>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div>SECCIÓN 4</div>
+    <div class="center">COMPARACIÓN A/B/C VISUAL</div>
+    <div>25 / 29</div>
+  </div>
+</section>
+
+<!-- 26 · 3 CAPAS DE DATOS -->
+<section class="slide">
+  <div class="brand-bar">
+    <div class="left">AINNOVATION</div>
+    <div class="center">3 CAPAS DE DATOS</div>
+    <div class="right">26 / 29</div>
+  </div>
+  <div class="body full">
+    <div class="left-col">
+      <div class="eyebrow">Mecánica MECE de la recopilación</div>
+      <h2 class="section">3 capas. Cada una mide algo distinto. Solo cruzando se decide.</h2>
+      <table class="specs">
+        <thead><tr>
+          <th>Capa</th>
+          <th>Source</th>
+          <th>Frecuencia</th>
+          <th>Métricas exclusivas</th>
+          <th>Decisión que habilita</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td><strong style="color: var(--violet);">1 · Plataforma</strong></td>
+            <td>Meta Ads Manager API</td>
+            <td>Diaria</td>
+            <td>CPA, CTR, CPC, frecuencia, CPM</td>
+            <td>¿Qué ad atrae atención y a qué costo?</td>
+          </tr>
+          <tr>
+            <td><strong style="color: var(--violet);">2 · Conversación</strong></td>
+            <td>AEC bot v3.5 + sub-agentes + escalación humana</td>
+            <td>Real-time por mensaje</td>
+            <td>Giro, volumen, herramienta, ticket, objeción, sentimiento, etapa, resultado</td>
+            <td>¿Qué ad atrae leads de calidad?</td>
+          </tr>
+          <tr>
+            <td><strong style="color: var(--violet);">3 · Post-venta</strong></td>
+            <td>GHL CRM + facturación recurrente</td>
+            <td>Mensual</td>
+            <td>MRR, ad de origen, tier, upgrades, broadcasts, churn, LTV</td>
+            <td>¿Qué ad genera dinero real, no clicks?</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="body-copy" style="margin-top: 18px;">
+        <strong>El cierre del loop:</strong> la conversión real (Capa 3) regresa al pixel de Meta vía CAPI. El sistema se autoptimiza con feedback verdadero, no con clicks aparentes. Esa es la diferencia entre Ainnovation y cualquier agencia que solo mira Capa 1.
+      </p>
+      <p class="body-copy dim" style="margin-top: 12px;">
+        Un ad puede ganar en Capa 1 (CPA bajo) y perder en Capa 2 (leads basura) o Capa 3 (no cierran). Solo cruzando las 3 se toman decisiones correctas. Solo 1 de 3 agencias en LATAM mide así.
+      </p>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div>SECCIÓN 5</div>
+    <div class="center">3 CAPAS DE DATOS</div>
+    <div>26 / 29</div>
+  </div>
+</section>
+
+<!-- 27 · KPIs -->
+<section class="slide">
+  <div class="brand-bar">
+    <div class="left">AINNOVATION</div>
+    <div class="center">KPIs OBJETIVO · LO QUE MIDO</div>
+    <div class="right">27 / 29</div>
+  </div>
+  <div class="body full">
+    <div class="left-col">
+      <div class="eyebrow">Targets progresivos sem 2 / sem 4 / sem 12</div>
+      <h2 class="section">Lo que mido como CEO. Lo que ustedes deben optimizar.</h2>
+      <table class="specs">
+        <thead><tr>
+          <th>Métrica</th>
+          <th>Sem 2</th>
+          <th>Sem 4</th>
+          <th>Sem 12</th>
+        </tr></thead>
+        <tbody>
+          <tr><td>Costo por conversación iniciada</td><td class="num">&lt; $200</td><td class="num">&lt; $150</td><td class="num">&lt; $100</td></tr>
+          <tr><td>Costo por lead calificado</td><td class="num">—</td><td class="num">&lt; $500</td><td class="num">&lt; $300</td></tr>
+          <tr><td>CTR</td><td class="num">&gt; 1%</td><td class="num">&gt; 1.5%</td><td class="num">&gt; 2.5%</td></tr>
+          <tr><td>Tasa de cierre</td><td class="num">6%</td><td class="num">10%</td><td class="num">15%</td></tr>
+          <tr><td>Ghosteo rate</td><td class="num">43%</td><td class="num">30%</td><td class="num">20%</td></tr>
+          <tr><td>Mensajes hasta demo</td><td class="num">15</td><td class="num">10</td><td class="num">8</td></tr>
+          <tr><td>Nuevos clientes/mes</td><td class="num">2</td><td class="num">4</td><td class="num">6</td></tr>
+          <tr><td>MRR nuevo/mes</td><td class="num">$4K-$10K</td><td class="num">$12K-$24K</td><td class="num">$24K-$40K</td></tr>
+          <tr><td>CAC promedio</td><td class="num">$7,500</td><td class="num">$5,000</td><td class="num">$3,500</td></tr>
+          <tr><td>LTV/CAC ratio</td><td class="num">&gt; 3×</td><td class="num">&gt; 5×</td><td class="num">&gt; 8×</td></tr>
+        </tbody>
+      </table>
+      <p class="body-copy" style="margin-top: 18px;">
+        <strong>Si LTV/CAC sem 12 &lt; 5×:</strong> el modelo no escala. Cualquier crecimiento adicional consume capital. Pivote forzado a outbound o reposicionamiento de pricing.
+      </p>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div>SECCIÓN 6</div>
+    <div class="center">KPIs OBJETIVO</div>
+    <div>27 / 29</div>
+  </div>
+</section>
+
+<!-- 28 · RIESGOS -->
+<section class="slide">
+  <div class="brand-bar">
+    <div class="left">AINNOVATION</div>
+    <div class="center">LO QUE FALTA · GAPS HONESTOS</div>
+    <div class="right">28 / 29</div>
+  </div>
+  <div class="body full">
+    <div class="left-col">
+      <div class="eyebrow">Lo que veo desde afuera</div>
+      <h2 class="section">3 gaps que pueden romper el modelo si no los cierran.</h2>
+      <ul class="bullet-list">
+        <li><strong>Framework ético público.</strong> Si quieren operar en mercado europeo (Madrid €499/€1,299/€2,499), AI Act EU + GDPR no son opcionales. Política de transparencia (¿el lead sabe que habla con IA?), retención de data, consent explícito. Sin esto, riesgo legal real.</li>
+        <li><strong>Multi-canal.</strong> El bot AEC ya soporta WhatsApp, IG, FB, SMS, TikTok, Live Chat, Email. La campaña solo invierte en Meta WhatsApp. Mi tesis pública es 1-to-1 → 1-to-machine: IoT, conversational interfaces nativas, CTV interactivo. Estás dejando el 60% del paradigma sin tocar.</li>
+        <li><strong>Caso documentado del loop.</strong> El framework existe. La metodología es defendible. Pero NO hay UN caso público donde insight → cambio → resultado medible se haya completado de punta a punta. Sin ese caso, todo es teoría. Con ese caso, todo es prueba — y vale más que la campaña entera para construir autoridad.</li>
+      </ul>
+      <p class="body-copy" style="margin-top: 22px;">
+        <strong>El cuarto gap implícito:</strong> ustedes son 1 persona operando lo que en Ogilvy hacen 600. Eso es agility hoy, riesgo en 12 meses. Plan de hiring por disciplina (programador → analyst → creative → AM B2B) en orden, no improvisado.
+      </p>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div>SECCIÓN 7</div>
+    <div class="center">GAPS RECONOCIDOS</div>
+    <div>28 / 29</div>
+  </div>
+</section>
+
+<!-- 29 · CIERRE -->
+<section class="slide">
+  <div class="brand-bar">
+    <div class="left">AINNOVATION</div>
+    <div class="center">CIERRE · LO QUE NECESITO DE USTEDES</div>
+    <div class="right">29 / 29</div>
+  </div>
+  <div class="body full">
+    <div class="left-col">
+      <div class="eyebrow">Las 5 cosas que importan en sem 3-4</div>
+      <h2 class="section">Cuando lleguen los datos, esto es lo que harán.</h2>
+      <ul class="bullet-list">
+        <li><strong>Aplicar este framework ad por ad.</strong> NO interpretar libre. Abrir el Pit Stop 2 (`AINNOVATION-DATA-INTERPRETATION-FRAMEWORK.md`), ir a la vertical, leer literal qué significa el resultado.</li>
+        <li><strong>Cruzar las 3 capas SIEMPRE.</strong> Nunca decidir con CPA solo. Calidad del lead (Capa 2) y MRR cerrado (Capa 3) son las que importan.</li>
+        <li><strong>Documentar las objeciones agregadas por segmento.</strong> El custom field "Objeción principal" en GHL es el insight más valioso de toda Ronda 1 — más que cualquier CPA.</li>
+        <li><strong>Múltiples ganadores son lo esperado.</strong> Si 4 ads pasan threshold, escalar 4. NO matar al "menos ganador" porque sí — solo matar a los que NO pasan threshold (CPA &gt; $400 sin LTV que justifique).</li>
+        <li><strong>Producir Pit Stop 3 con la data real.</strong> Sem 4. Documento nuevo con los resultados + las decisiones tomadas con este framework. Eso es el caso de estudio que les vale más que la campaña.</li>
+      </ul>
+      <p class="body-copy" style="margin-top: 26px; font-size: 18px;">
+        Tienen el framework. Tienen la metodología. Tienen el sistema técnico funcionando. Lo que sigue es disciplina de lectura cuando lleguen los datos.
+      </p>
+      <p class="quote-attr" style="margin-top: 24px;">— JORDI URBEA · CEO OGILVY SPAIN · 2026-04-26</p>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div>FIN</div>
+    <div class="center">AINNOVATION INTERNAL TEAM BRIEFING</div>
+    <div>29 / 29</div>
+  </div>
+</section>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+const progress = document.getElementById('progress');
+const navHint = document.getElementById('nav-hint');
+const total = slides.length;
+
+function updateProgress() {
+  const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+  const slideHeight = window.innerHeight;
+  const currentSlide = Math.round(scrollTop / slideHeight) + 1;
+  const pct = (currentSlide / total) * 100;
+  progress.style.width = pct + '%';
+}
+window.addEventListener('scroll', updateProgress);
+updateProgress();
+
+document.addEventListener('keydown', (e) => {
+  const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+  const slideHeight = window.innerHeight;
+  const currentSlide = Math.round(scrollTop / slideHeight);
+
+  if (e.key === 'ArrowDown' || e.key === ' ' || e.key === 'PageDown' || e.key === 'ArrowRight') {
+    e.preventDefault();
+    if (currentSlide < total - 1) slides[currentSlide + 1].scrollIntoView({ behavior: 'smooth' });
+  }
+  if (e.key === 'ArrowUp' || e.key === 'PageUp' || e.key === 'ArrowLeft') {
+    e.preventDefault();
+    if (currentSlide > 0) slides[currentSlide - 1].scrollIntoView({ behavior: 'smooth' });
+  }
+  if (e.key === 'Home') { e.preventDefault(); slides[0].scrollIntoView({ behavior: 'smooth' }); }
+  if (e.key === 'End') { e.preventDefault(); slides[total - 1].scrollIntoView({ behavior: 'smooth' }); }
+});
+
+let interacted = false;
+['scroll', 'keydown'].forEach(evt => {
+  window.addEventListener(evt, () => {
+    if (!interacted) {
+      interacted = true;
+      setTimeout(() => { if (navHint) navHint.style.opacity = '0'; }, 2000);
+    }
+  });
+});
+</script>
+
+</body>
+</html>
