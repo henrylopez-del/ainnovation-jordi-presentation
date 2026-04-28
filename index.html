@@ -559,11 +559,60 @@
     z-index: 100;
   }
 
-  /* Responsive */
+  /* Responsive — 4 breakpoints */
+
+  /* Large tablet / small desktop ≤ 1200px — tighten collage tiles */
+  @media (max-width: 1200px) {
+    .bp-cols { gap: 14px; }
+    .bp-grid { grid-template-columns: repeat(4, 1fr); gap: 3px; }
+    .bp-header { font-size: 9px; letter-spacing: 0.10em; }
+    .bp-intro { font-size: 11px; }
+    .right-col.trio { gap: 8px; }
+  }
+
+  /* Tablet ≤ 900px — collapse main split + collapse collage to 1 column */
   @media (max-width: 900px) {
-    .body { grid-template-columns: 1fr; gap: 20px; }
+    .body { grid-template-columns: 1fr; gap: 20px; padding: 16px 0; }
     .right-col { max-height: 40vh; }
     .ads-grid-19 { grid-template-columns: repeat(5, 1fr); }
+    .bp-cols { grid-template-columns: 1fr; gap: 8px; }
+    .bp-grid { grid-template-columns: repeat(6, 1fr); }
+    .right-col.trio { flex-direction: row; flex-wrap: wrap; gap: 10px; }
+    .right-col.trio .variant-img { flex: 1 1 30%; }
+    .reading-grid { grid-template-columns: 1fr; gap: 12px; }
+    .slide { padding: 16px 24px; }
+  }
+
+  /* Small tablet / large mobile ≤ 700px — stack variant-img, smaller tiles */
+  @media (max-width: 700px) {
+    .slide { height: auto; min-height: 100vh; padding: 14px 18px; }
+    .bp-grid { grid-template-columns: repeat(5, 1fr); }
+    .right-col.trio { flex-direction: column; }
+    .right-col.trio .variant-img { flex: 0 0 auto; }
+    .right-col .variant-img img { max-height: 60vh; }
+    .brand-bar { font-size: 10px; }
+    .brand-bar .center { font-size: 9px; letter-spacing: 0.12em; }
+    .meta-row { flex-wrap: wrap; gap: 8px; }
+  }
+
+  /* Mobile ≤ 500px — full stack, minimal padding */
+  @media (max-width: 500px) {
+    .slide { padding: 12px 14px; }
+    .bp-grid { grid-template-columns: repeat(4, 1fr); gap: 3px; }
+    .bp-header { font-size: 9px; padding: 2px 0; }
+    .bp-intro { font-size: 10px; line-height: 1.4; }
+    .brand-bar { padding: 8px 12px; }
+    .brand-bar .left, .brand-bar .right { font-size: 9px; }
+    .brand-bar .center { display: none; }
+    .footer-bar { font-size: 9px; padding: 6px 12px; }
+    .ad-id { font-size: 12px; }
+    .ad-title { font-size: 22px; line-height: 1.1; }
+    .meta-item { font-size: 11px; }
+    .reading-cell { padding: 12px; }
+    .reading-cell .lbl { font-size: 14px; }
+    .reading-cell .txt, .reading-cell .action { font-size: 12px; line-height: 1.4; }
+    blockquote.hook { font-size: 14px; padding: 10px 14px; }
+    .var-block.question .txt { font-size: 12px; line-height: 1.4; }
   }
 </style>
 </head>
