@@ -743,7 +743,7 @@
         </div>
       </div>
 
-      <div class="click-hint">→ Click cualquier hero para ver la imagen "para el curioso" · Click otra vez para volver</div>
+      <div class="click-hint">→ Tip: en cada slide individual, click la imagen "VENDE SOLA" para ver el segundo scroll del carrusel ("para el curioso")</div>
     </div>
   </div>
   <div class="footer-bar">
@@ -1971,7 +1971,8 @@ let interacted = false;
 <script>
 // Toggle hero ↔ curious image on click — works on overview collage AND individual ad slides
 (function() {
-  const tiles = document.querySelectorAll('.grid-tile img, .variant-img img, .right-col > img');
+  // Only individual ad slides — NOT the overview collage (collage stays static)
+  const tiles = document.querySelectorAll('.variant-img img, .right-col > img');
   console.log('[Hero toggle] Found', tiles.length, 'candidate images');
   let clickable = 0;
   tiles.forEach(img => {
