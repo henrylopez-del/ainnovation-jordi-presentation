@@ -1969,10 +1969,10 @@ let interacted = false;
 </script>
 
 <script>
-// Toggle hero ↔ curious image on click for grid tiles (runs immediately since script is at end of body)
+// Toggle hero ↔ curious image on click — works on overview collage AND individual ad slides
 (function() {
-  const tiles = document.querySelectorAll('.grid-tile img');
-  console.log('[Hero toggle] Found', tiles.length, 'grid tile images');
+  const tiles = document.querySelectorAll('.grid-tile img, .variant-img img, .right-col > img');
+  console.log('[Hero toggle] Found', tiles.length, 'candidate images');
   let clickable = 0;
   tiles.forEach(img => {
     const src = img.getAttribute('src') || '';
@@ -1980,28 +1980,41 @@ let interacted = false;
     const isVariant = src.includes('variantA') || src.includes('variantB') || src.includes('stockmodel');
     if (isHero && !isVariant) {
       img.style.cursor = 'pointer';
-      img.title = 'Click para ver imagen para curiosos';
+      img.title = 'Click para ver imagen "para el curioso" (segundo scroll del carrusel)';
       clickable++;
+      // Track sibling label if present (e.g., "VENDE SOLA")
+      const label = img.parentElement && img.parentElement.querySelector('.variant-label');
+      const originalLabel = label ? label.textContent : null;
       img.addEventListener('click', function(e) {
         e.stopPropagation();
         e.preventDefault();
         const cur = img.getAttribute('src');
-        let next;
+        let next, isSwitchToCurious;
         if (cur.includes('img1-hero')) {
           next = cur.replace(/img1-hero(-younglings)?/, 'img2-detalle');
-          img.title = 'Click para volver al hero';
+          img.title = 'Click para volver al hero (vende sola)';
+          isSwitchToCurious = true;
         } else if (cur.includes('img2-detalle')) {
           next = cur.replace('img2-detalle', 'img1-hero');
-          img.title = 'Click para ver imagen para curiosos';
+          img.title = 'Click para ver imagen "para el curioso"';
+          isSwitchToCurious = false;
         }
         if (next) {
           img.setAttribute('src', next);
+          // Update label if applicable
+          if (label && originalLabel) {
+            if (isSwitchToCurious && originalLabel.toUpperCase().includes('VENDE')) {
+              label.textContent = 'PARA EL CURIOSO';
+            } else {
+              label.textContent = originalLabel;
+            }
+          }
           console.log('[Hero toggle] swapped to', next);
         }
       });
     }
   });
-  console.log('[Hero toggle] Made', clickable, 'tiles clickable');
+  console.log('[Hero toggle] Made', clickable, 'images clickable');
 })();
 </script>
 </body>
