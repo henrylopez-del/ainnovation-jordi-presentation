@@ -275,6 +275,11 @@
     padding: 14px 16px;
     margin: 14px 0;
   }
+  .var-block.question {
+    border: 2px solid var(--magenta);
+    background: rgba(224,64,251,0.08);
+    padding: 16px 18px;
+  }
   .var-block .lbl {
     font-family: 'JetBrains Mono', monospace;
     font-size: 9px;
@@ -284,11 +289,21 @@
     margin-bottom: 6px;
     font-weight: 700;
   }
+  .var-block.question .lbl {
+    color: var(--magenta);
+    font-size: 10px;
+  }
   .var-block .txt {
     font-family: 'Satoshi', sans-serif;
     font-size: 14px;
     line-height: 1.45;
     color: var(--white);
+  }
+  .var-block.question .txt {
+    font-family: 'Clash Display', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.25;
   }
 
   .reading-grid {
@@ -718,20 +733,20 @@
         <div class="meta-item"><span class="label">CTA:</span><span class="value">DEMO</span></div>
       </div>
       <blockquote class="hook">"1,532 mensajes contestados · 87 citas agendadas · 541 follow-ups · 24/7"</blockquote>
-      <div class="var-block">
-        <div class="lbl">Variable que testea</div>
-        <div class="txt">Dato puro genérico vs verticales. Es el control group de toda la campaña.</div>
+      <div class="var-block question">
+        <div class="lbl">Pregunta Jordi</div>
+        <div class="txt">¿El comprador PyME mexicano en 2026 ya tiene madurez para decidir desde un dato puro y abstracto, o todavía necesita la pertenencia tribal vertical para que el dato signifique algo?</div>
       </div>
       <div class="reading-grid">
         <div class="reading-cell win">
-          <div class="lbl">Si gana a verticales</div>
-          <div class="txt">PyME mexicana compra por dato puro, no por identificación tribal con su giro.</div>
-          <div class="action">Acción: simplificar a 3-5 ads master con variantes de número. Producción 80% más barata.</div>
+          <div class="lbl">SÍ</div>
+          <div class="txt">Hay una capa de comprador analítica que ya cruzó el umbral de sofisticación — el dato es language. El mercado MX se está nivelando con SaaS US/EU. Categoría madurando.</div>
+          <div class="action">Acción: Reducir producción a un master data-driven horizontal + 3-4 verticales tácticos. Reasignar 60% del presupuesto creativo a optimizar el dato que más mueve.</div>
         </div>
         <div class="reading-cell lose">
-          <div class="lbl">Si pierde a verticales</div>
-          <div class="txt">Identificación tribal pesa más que el número genérico.</div>
-          <div class="action">Acción: producción permanente de creatives por vertical. Modelo "performance vertical".</div>
+          <div class="lbl">NO</div>
+          <div class="txt">El comprador MX sigue comprando por identificación (categoría) antes que por evidencia (dato). El número solo no convence — necesita el espejo del giro.</div>
+          <div class="action">Acción: Doblar la apuesta vertical. Construir sistema de creative '1 ad master por giro' como motor permanente. Posicionarse como 'el AI que entiende mi negocio', no como 'el AI que tiene el dato'.</div>
         </div>
       </div>
     </div>
@@ -766,20 +781,20 @@
         <div class="meta-item"><span class="label">CTA:</span><span class="value">DEMO</span></div>
       </div>
       <blockquote class="hook">"184 mensajes · 23 citas · 7 recuperadas · 0 veces que la dueña tocó el teléfono"</blockquote>
-      <div class="var-block">
-        <div class="lbl">Variable que testea (vs D2-01 + D2-02)</div>
-        <div class="txt">Stats narrativos de transformación semanal - el "0" como focal point. La dueña no toca el teléfono.</div>
+      <div class="var-block question">
+        <div class="lbl">Pregunta Jordi</div>
+        <div class="txt">¿Existe en México 2026 el comprador PyME que paga premium ($4,999/mes) en frío, o el path real es entry $1,999 → upgrade orgánico tras experiencia? ¿La categoría se vende top-down (vendedor consultivo) o bottom-up (producto self-serve)?</div>
       </div>
       <div class="reading-grid">
         <div class="reading-cell win">
-          <div class="lbl">Si gana</div>
-          <div class="txt">Mariana responde a desglose narrativo de su semana real, no a número absoluto.</div>
-          <div class="action">Acción: replicar formato narrativo a otros verticales con ticket bajo.</div>
+          <div class="lbl">SÍ</div>
+          <div class="txt">Existe el comprador premium directo en MX — el mercado tiene madurez SaaS para tickets de $60K MXN/año en frío. Ainnovation puede construir línea premium independiente con CAC alto pero ROAS gigante. Es el insight más caro de toda la campaña.</div>
+          <div class="action">Acción: Construir equipo comercial humano dedicado al tier premium. CAC $500-800 justifica costo de venta consultiva. Lanzar línea producto 'Ainnovation Enterprise' con onboarding white-glove. Pricing sube a $7,999 con paquete servicios.</div>
         </div>
         <div class="reading-cell lose">
-          <div class="lbl">Si pierde</div>
-          <div class="txt">El stat narrativo no resuena. Los otros formatos belleza (D2-01 tabla o D2-02 hero number) tienen otra palanca.</div>
-          <div class="action">Acción: matar D1-02 a favor del ganador entre D2-01/D2-02. Mantener vertical.</div>
+          <div class="lbl">NO</div>
+          <div class="txt">El path real es entry $1,999 → upgrade. El comprador mexicano necesita probar antes de comprometerse a premium — no hay venta consultiva en frío vía Meta. La categoría se vende product-led, no sales-led.</div>
+          <div class="action">Acción: Matar D2-10 + D1-08 + D2-07 como ads de adquisición. Mover todo el mensaje 'Sistema Completo' a comunicación interna (email/WhatsApp) para clientes activos en mes 2-3. Optimizar upgrade rate, no acquisition premium. Insight reportable: 'En PyME LATAM 2026, el path al premium es uso, no pitch'.</div>
         </div>
       </div>
     </div>
@@ -814,20 +829,20 @@
         <div class="meta-item"><span class="label">CTA:</span><span class="value">DEMO</span></div>
       </div>
       <blockquote class="hook">"150 entran. 12 te llegan. El resto es ruido. Tu solo cierras."</blockquote>
-      <div class="var-block">
-        <div class="lbl">Variable que testea (sin par directo)</div>
-        <div class="txt">Concepto FILTRO como hero. Reencuadra el problema: el dolor no es contestar rápido - es clasificar. Compara contra D1-01 en hombres 28-50.</div>
+      <div class="var-block question">
+        <div class="lbl">Pregunta Jordi</div>
+        <div class="txt">¿Roberto compra herramientas que reframean su problema (filtrar) o sólo herramientas que resuelven el problema que él ya nombró (vender más)?</div>
       </div>
       <div class="reading-grid">
         <div class="reading-cell win">
-          <div class="lbl">Si gana a D1-01 en hombres 28-50</div>
-          <div class="txt">El reframing funcionó. Roberto piensa en clasificación, no en velocidad.</div>
-          <div class="action">Acción: cambiar pitch retail a "filtro inteligente". Sub-variantes por giro (motos, muebles, refacciones).</div>
+          <div class="lbl">SÍ</div>
+          <div class="txt">El comprador retail mexicano acepta diagnósticos externos — confía en que un proveedor le diga cómo pensar el negocio. Espacio para venta consultiva, no transaccional.</div>
+          <div class="action">Acción: Crear layer educativo (webinar, mini-curso, contenido orgánico) que enseñe el reframing del FILTRO. Subir el ticket promedio porque el comprador acepta que Ainnovation define la categoría.</div>
         </div>
         <div class="reading-cell lose">
-          <div class="lbl">Si pierde a D1-01</div>
-          <div class="txt">Dolor real de Roberto NO es clasificar - probablemente "vender más" como outcome.</div>
-          <div class="action">Acción: cambiar pitch a outcome ("vendes 30% más sin contratar"). Matar concepto FILTRO.</div>
+          <div class="lbl">NO</div>
+          <div class="txt">Roberto sólo paga por outcome literal — vender más, ganar más, contratar menos. El reframing intelectual no le interesa. Comprador outcome-driven puro.</div>
+          <div class="action">Acción: Matar el lenguaje 'filtro/clasificar/calificar' en todo retail. Reescribir desde outcome puro: 'vendes 30% más con el mismo equipo'. Reservar reframing para vertical agencias o GHL.</div>
         </div>
       </div>
     </div>
@@ -862,20 +877,20 @@
         <div class="meta-item"><span class="label">CTA:</span><span class="value">DEMO</span></div>
       </div>
       <blockquote class="hook">"8:00pm · 8:30pm · 9:00pm · La hora que pierde $15,000 cada noche."</blockquote>
-      <div class="var-block">
-        <div class="lbl">Variable que testea (vs D2-03)</div>
-        <div class="txt">Fear of loss con número concreto + timeline simple en 3 momentos. Mismo dolor que D2-03 pero formato minimalista.</div>
+      <div class="var-block question">
+        <div class="lbl">Pregunta Jordi</div>
+        <div class="txt">El miedo a perder un paciente concreto a las 9pm, ¿activa decisión inmediata en el comprador clínico mexicano, o activa parálisis defensiva (cierra el ad, justifica que 'a mí no me pasa')?</div>
       </div>
       <div class="reading-grid">
         <div class="reading-cell win">
-          <div class="lbl">Si gana a D2-03</div>
-          <div class="txt">Cynthia procesa rápido - el dolor del número en 3 momentos basta.</div>
-          <div class="action">Acción: replicar formato traffic-light a otros verticales ticket alto (abogados, contadores, vet).</div>
+          <div class="lbl">SÍ</div>
+          <div class="txt">El comprador salud MX procesa la urgencia operacional en tiempo real — el dolor presente vence a la inercia. La categoría salud está educada en pérdida de oportunidad (formación clínica enseña triage).</div>
+          <div class="action">Acción: Replicar el formato traffic-light a verticales de ticket alto con dinámica 'una decisión cuesta mucho' (dental, abogados, contadores, vet). Pasar el aprendizaje a piezas tier $4,999.</div>
         </div>
         <div class="reading-cell lose">
-          <div class="lbl">Si pierde a D2-03</div>
-          <div class="txt">Las clínicas necesitan más detalle (forensia) que un número impacto.</div>
-          <div class="action">Acción: matar timeline simple. Estructura "autopsia detallada" para ticket alto.</div>
+          <div class="lbl">NO</div>
+          <div class="txt">El miedo nombrado se siente acusatorio — Cynthia entra en defensiva ('ese no es mi caso'). En salud, el ego profesional rechaza que un anuncio le diga lo que está perdiendo.</div>
+          <div class="action">Acción: Cambiar fear-of-loss → demostración de pares ('3 clínicas como la tuya en CDMX ya recuperan $X/mes'). Probar peer-validation antes que urgencia operacional. Reframe Ogilvy clásico: no atacar el ego del comprador profesional.</div>
         </div>
       </div>
     </div>
@@ -909,20 +924,20 @@
         <div class="meta-item"><span class="label">CTA:</span><span class="value">GHL → ghl_agent</span></div>
       </div>
       <blockquote class="hook">"1,000 funciones. Usas 6. No necesitas aprender más. Necesitas delegar."</blockquote>
-      <div class="var-block">
-        <div class="lbl">Variable que testea (vs D2-04 navaja suiza)</div>
-        <div class="txt">Culpa explícita - ataca el ego: estás desperdiciando lo que pagas.</div>
+      <div class="var-block question">
+        <div class="lbl">Pregunta Jordi</div>
+        <div class="txt">El usuario de GHL que pagó por la herramienta y no la usa, ¿está dispuesto a admitir el desperdicio para resolverlo, o el costo psicológico de admitirlo es tan alto que prefiere mantener el problema oculto?</div>
       </div>
       <div class="reading-grid">
         <div class="reading-cell win">
-          <div class="lbl">Si gana</div>
-          <div class="txt">Luis admite la culpa y eso lo mueve a actuar. La confrontación funciona.</div>
-          <div class="action">Acción: bot script más corto para intent_ghl - saltar directo a propuesta.</div>
+          <div class="lbl">SÍ</div>
+          <div class="txt">Luis tiene la madurez emocional para reconocer una mala decisión y comprar la corrección. Existe un comprador adulto en este segmento — el messaging directo funciona. Sub-buyer raro y valioso.</div>
+          <div class="action">Acción: Acortar pipeline radicalmente para `intent_ghl`. Saltar a propuesta directa después del primer mensaje. El comprador ya sabe lo que tiene que hacer — no le hagas perder tiempo en discovery.</div>
         </div>
         <div class="reading-cell lose">
-          <div class="lbl">Si pierde</div>
-          <div class="txt">Luis NO acepta culpa. La confrontación lo aleja. Necesita reframe aspiracional (D2-04).</div>
-          <div class="action">Acción: matar D1-05. Reescribir TODO el messaging GHL en clave aspiracional.</div>
+          <div class="lbl">NO</div>
+          <div class="txt">La culpa explícita activa rechazo defensivo — Luis cierra el chat para no aceptar lo que sabe. En LATAM, el ego profesional tiene defensas más altas que en US.</div>
+          <div class="action">Acción: Reescribir TODO el messaging GHL en clave de oportunidad ('desbloquea lo que ya pagaste') en lugar de culpa ('desperdicias lo que pagaste'). Mismo insight, vector emocional opuesto. Validar con D2-04.</div>
         </div>
       </div>
     </div>
@@ -956,20 +971,20 @@
         <div class="meta-item"><span class="label">CTA:</span><span class="value">AGENCIA → agencies_agent</span></div>
       </div>
       <blockquote class="hook">"Tus clientes no usan GHL. Cancelan. Somos el equipo técnico que ellos necesitan. Tú cobras."</blockquote>
-      <div class="var-block">
-        <div class="lbl">Variable que testea (vs D2-05 problema-enfocado)</div>
-        <div class="txt">Editorial/manifesto - conecta emocionalmente antes de proponer solución.</div>
+      <div class="var-block question">
+        <div class="lbl">Pregunta Jordi</div>
+        <div class="txt">¿El reseller mexicano de SaaS B2B compra a través de identidad ('este sí entiende lo que vivo') o a través de pragmatismo? ¿Hay todavía espacio para venta consultiva-emocional en B2B LATAM 2026?</div>
       </div>
       <div class="reading-grid">
         <div class="reading-cell win">
-          <div class="lbl">Si gana</div>
-          <div class="txt">Reseller necesita conexión emocional antes de comprar - "este sí entiende lo que vivo".</div>
-          <div class="action">Acción: partner deal requiere venta consultiva con narrativa. Más contenido editorial.</div>
+          <div class="lbl">SÍ</div>
+          <div class="txt">Existe un reseller que compra como editor de revista — narrativa, identidad, voz. Comprador con LTV alto y referidos orgánicos (decisión identitaria, no transaccional). Es el comprador Ogilvy clásico: paga por la marca.</div>
+          <div class="action">Acción: Construir asset editorial permanente — newsletter mensual al pool reseller, op-eds firmados por Henry o partner reseller estrella, contenido que construye categoría de pensamiento. Esto no es marketing, es prensa de marca.</div>
         </div>
         <div class="reading-cell lose">
-          <div class="lbl">Si pierde</div>
-          <div class="txt">Reseller no quiere filosofía - es tiempo/dinero. D2-05 directo gana.</div>
-          <div class="action">Acción: aplicar tono directo a TODO el funnel partner. Matar manifesto.</div>
+          <div class="lbl">NO</div>
+          <div class="txt">El reseller mexicano post-2024 es 100% pragmático — la narrativa filosófica le suena a humo. Quiere problema/solución/precio en 30 segundos. La era del manifesto B2B en LATAM ya pasó.</div>
+          <div class="action">Acción: Matar el formato editorial. Toda comunicación reseller pasa a formato diagnóstico-solución directo (D2-05). El comprador B2B SaaS LATAM evolucionó hacia eficiencia, no hacia narrativa.</div>
         </div>
       </div>
     </div>
@@ -1003,20 +1018,20 @@
         <div class="meta-item"><span class="label">CTA:</span><span class="value">PARTNER → agencies_agent</span></div>
       </div>
       <blockquote class="hook">"Tu agencia es creativa. Nosotros somos los datos. Backend técnico. Atribución real."</blockquote>
-      <div class="var-block">
-        <div class="lbl">Variable que testea (vs D2-06 dark tech pills)</div>
-        <div class="txt">Tono educativo / explicativo - posicionamiento: complementarios, no competencia.</div>
+      <div class="var-block question">
+        <div class="lbl">Pregunta Jordi</div>
+        <div class="txt">¿La agencia creativa LATAM está psicológicamente lista para reconocer que necesita un partner técnico, o el ego 'nosotros somos full-service' sigue bloqueando la admisión de gap?</div>
       </div>
       <div class="reading-grid">
         <div class="reading-cell win">
-          <div class="lbl">Si gana</div>
-          <div class="txt">Las agencias necesitan que les expliquen primero - NO tienen vocabulario técnico interno.</div>
-          <div class="action">Acción: crear tier separado para agencias con pricing premium ($5K-15K/mes según volumen).</div>
+          <div class="lbl">SÍ</div>
+          <div class="txt">El director de agencia mexicano cruzó el umbral de humildad técnica — acepta que el stack moderno (CAPI, atribución, dashboards) excede su capacidad interna y prefiere partner que contratar. Valida un canal B2B con LTV multiplicador real.</div>
+          <div class="action">Acción: Construir tier 'agency partnership' con pricing white-label, comisiones revenue-share, onboarding técnico estructurado. Ainnovation se vuelve infraestructura B2B2C — el modelo más defensible del mapa.</div>
         </div>
         <div class="reading-cell lose">
-          <div class="lbl">Si pierde</div>
-          <div class="txt">Las agencias responden a códigos técnicos (pixel, CAPI, UTMs). El club excluyente atrae más.</div>
-          <div class="action">Acción: contenido técnico-críptico (D2-06) gana. Matar tono educativo.</div>
+          <div class="lbl">NO</div>
+          <div class="txt">La agencia creativa sigue defendiendo territorio — 'no necesitamos ayuda técnica, lo aprendemos'. Es un mercado pre-maduro para partnership. El ego artesanal vs el commodity técnico: la agencia LATAM aún no eligió.</div>
+          <div class="action">Acción: Pausar canal partner agencia. Pivotar el mismo presupuesto a in-house teams de marcas medianas (los que sí aceptan que no son agencias). Insight: el partner B2B en LATAM se construye con marketers internos, no con agencias.</div>
         </div>
       </div>
     </div>
@@ -1050,20 +1065,20 @@
         <div class="meta-item"><span class="label">CTA:</span><span class="value">INMOBILIARIA</span></div>
       </div>
       <blockquote class="hook">"5 vendedores. ¿Cuántos leads pierde cada uno? Este dashboard sí sabe."</blockquote>
-      <div class="var-block">
-        <div class="lbl">Variable que testea (vs D2-07 3 problemas)</div>
-        <div class="txt">Solución (dashboard) como hero - pregunta retórica → respuesta visual = la herramienta.</div>
+      <div class="var-block question">
+        <div class="lbl">Pregunta Jordi</div>
+        <div class="txt">Cuando Alejandro ve '¿cuántos leads pierde cada vendedor?', ¿lo que dispara la compra es el deseo de control sobre su equipo (visibility) o el miedo de descubrir lo que ya sospecha (denial)? ¿La PyME premium MX opera desde dato o desde intuición?</div>
       </div>
       <div class="reading-grid">
         <div class="reading-cell win">
-          <div class="lbl">Si gana</div>
-          <div class="txt">Alejandro responde a ver la herramienta. Necesita "sí, exactamente eso quiero". 1 cierre = ROAS 12×.</div>
-          <div class="action">Acción: producir video demo del dashboard real. Crear tier "Inmobiliaria $9,999".</div>
+          <div class="lbl">SÍ</div>
+          <div class="txt">El director inmobiliario MX evolucionó de operador-de-instinto a operador-de-dato — quiere ver el sistema, medir, accountability. Señal de profesionalización del sector. Confirma que el ROAS de premium ($4,999) es viable.</div>
+          <div class="action">Acción: Producir video del dashboard real. Crear tier 'Concierge Inmobiliaria $9,999' para directores con 15+ vendedores. Caso de estudio '1 venta paga el año' con cifra concreta y nombre real (con permiso).</div>
         </div>
         <div class="reading-cell lose">
-          <div class="lbl">Si pierde</div>
-          <div class="txt">Director necesita diagnóstico antes de solución (D2-07 gana). Quiere identificar primero.</div>
-          <div class="action">Acción: estructura "3 dolores → 1 solución" para todos los ads premium.</div>
+          <div class="lbl">NO</div>
+          <div class="txt">Alejandro prefiere no saber — el dashboard expone lo que su instinto le permite ignorar. La PyME MX premium aún opera desde relación y carisma personal, no desde sistema medido.</div>
+          <div class="action">Acción: Reescribir messaging premium desde '1 venta más al mes' (outcome) en vez de 'visibility de equipo' (proceso). El comprador no quiere medir — quiere ganar más. Adaptar D2-07 también.</div>
         </div>
       </div>
     </div>
@@ -1097,20 +1112,20 @@
         <div class="meta-item"><span class="label">CTA:</span><span class="value">(foto) → staging_agent</span></div>
       </div>
       <blockquote class="hook">"Manda una foto. Te la regresamos lista para vender. Gratis."</blockquote>
-      <div class="var-block">
-        <div class="lbl">Variable que testea (vs D2-08 before/after)</div>
-        <div class="txt">Portfolio (mostrar trabajo previo) como confianza. Cantidad de ejemplos = credibilidad.</div>
+      <div class="var-block question">
+        <div class="lbl">Pregunta Jordi</div>
+        <div class="txt">En 2026, con la saturación de imágenes generadas por IA, ¿el agente inmobiliario confía más en 'te muestro 4 casos previos' (volumen como prueba) o se vuelve escéptico ('4 fotos perfectas son sospechosas — son fake')? ¿La credibilidad migró de cantidad a contexto?</div>
       </div>
       <div class="reading-grid">
         <div class="reading-cell win">
-          <div class="lbl">Si gana (CPA por foto &lt;$200 + 20%+ pide info sistema)</div>
-          <div class="txt">Lead magnet validado. Funnel staging→sistema funciona.</div>
-          <div class="action">Acción: NUNCA matar. Replicar concepto a otros verticales (auditoría gratis para clínicas).</div>
+          <div class="lbl">SÍ</div>
+          <div class="txt">El agente acepta el portfolio como prueba — confianza por volumen sigue funcionando en LATAM 2026. Hay rezago vs el comprador US/EU que ya desconfía de cualquier imagen. Ventana de oportunidad para usar portfolio antes de que el mercado madure.</div>
+          <div class="action">Acción: Construir banco de casos reales con permisos de uso. Replicar formato 'lead magnet zero friction + portfolio' a otros verticales (auditoría gratis para clínicas, plantilla landing para agencias).</div>
         </div>
         <div class="reading-cell lose">
-          <div class="lbl">Si pierde a D2-08</div>
-          <div class="txt">El agente prefiere ver UN ejemplo dramático (before/after) que portfolio.</div>
-          <div class="action">Acción: matar portfolio grid. Mantener D2-08 visual.</div>
+          <div class="lbl">NO</div>
+          <div class="txt">Post-IA, el agente desconfía de portfolios ('cualquiera genera 4 antes/después con MidJourney'). La credibilidad ya no se construye con cantidad sino con contexto verificable (caso real, ubicación, agente nombrado).</div>
+          <div class="action">Acción: Pivotar a formato '1 caso real con dirección/agente/timeline verificables'. La nueva moneda de credibilidad es transparencia procesual, no volumen visual. Insight reportable: 'post-IA, la prueba migró de cantidad a verificabilidad'.</div>
         </div>
       </div>
     </div>
@@ -1143,20 +1158,20 @@
         <div class="meta-item"><span class="label">CTA:</span><span class="value">DEMO</span></div>
       </div>
       <blockquote class="hook">"ANTES: contestaba entre clienta y clienta · HOY: sistema contesta en 60 seg"</blockquote>
-      <div class="var-block">
-        <div class="lbl">Variable que testea (vs D1-02 + D2-02)</div>
-        <div class="txt">Comparación visual antes/después - transformación lado-a-lado en duotone navy/magenta.</div>
+      <div class="var-block question">
+        <div class="lbl">Pregunta Jordi</div>
+        <div class="txt">¿Mariana procesa el valor en términos relativos (vs su pasado de operación manual) o absolutos (vs el costo del sistema)? ¿La transformación antes/después construye más deseo que la cifra dura?</div>
       </div>
       <div class="reading-grid">
         <div class="reading-cell win">
-          <div class="lbl">Si gana</div>
-          <div class="txt">Mariana responde a transformación visual antes/después. La narrativa de cambio cierra.</div>
-          <div class="action">Acción: replicar formato a clínicas y retail. Crear más ads con estructura ✗/✓.</div>
+          <div class="lbl">SÍ</div>
+          <div class="txt">La narrativa transformacional vence al precio bruto — el comprador se vende a sí mismo cuando se ve 'antes' y 'después'. Es la herramienta retórica clásica de DTC, validada en PyME LATAM 2026.</div>
+          <div class="action">Acción: Estandarizar el formato 'ANTES/HOY' como template para los 5 verticales entry $1,999. Producir versión video (15s) para Reels y TikTok orgánico. La transformación es el formato más portable de la campaña.</div>
         </div>
         <div class="reading-cell lose">
-          <div class="lbl">Si pierde</div>
-          <div class="txt">El antes/después no resuena. Mariana prefiere stats narrativos (D1-02) o número masivo (D2-02).</div>
-          <div class="action">Acción: matar D2-01. Mantener vertical con el formato ganador.</div>
+          <div class="lbl">NO</div>
+          <div class="txt">Mariana huele defensa cuando le explican 'antes eras así' — el formato suena a venta, no a información. El comprador post-2024 detecta la estructura retórica y la rechaza.</div>
+          <div class="action">Acción: Validar D1-02 (stats narrativos sin estructura 'antes/después') como ganador. El comprador prefiere data agregada que comparación moralizante. Insight: la era del 'before/after' como vehículo creativo está agotándose en LATAM también.</div>
         </div>
       </div>
     </div>
@@ -1190,20 +1205,20 @@
         <div class="meta-item"><span class="label">CTA:</span><span class="value">DEMO</span></div>
       </div>
       <blockquote class="hook">"4,827 mensajes. Un salón. Un mes. Cada uno contestado."</blockquote>
-      <div class="var-block">
-        <div class="lbl">Variable que testea (vs D1-02 + D2-01)</div>
-        <div class="txt">Magnitud bruta sin contexto adicional. Solo el número masivo como hero.</div>
+      <div class="var-block question">
+        <div class="lbl">Pregunta Jordi</div>
+        <div class="txt">¿La PyME mexicana cree más en el caso real específico (4,827 con nombre y giro) o en el promedio agregado (1,532 como dato de categoría)? ¿La verdad se construye con muestra única o con N grande?</div>
       </div>
       <div class="reading-grid">
         <div class="reading-cell win">
-          <div class="lbl">Si gana</div>
-          <div class="txt">Mariana responde a magnitud bruta. El número grande la sorprende y convierte sin necesitar contexto.</div>
-          <div class="action">Acción: reformatear todos los entry $1,999 con número hero único.</div>
+          <div class="lbl">SÍ</div>
+          <div class="txt">El comprador LATAM confía en la anécdota concreta más que en el promedio — la prueba social es individual, no estadística. La campaña debería construirse sobre 10-15 casos reales con nombre y giro, no sobre cifras agregadas.</div>
+          <div class="action">Acción: Lanzar programa 'Caso del Mes' — un cliente real cada mes, con permiso, número exacto, foto, video corto. Convertir la base instalada en motor permanente de creative. ROI de adquisición + retención simultáneo.</div>
         </div>
         <div class="reading-cell lose">
-          <div class="lbl">Si pierde</div>
-          <div class="txt">El número solo sin contexto no resuena. Mariana necesita contexto narrativo o comparativo.</div>
-          <div class="action">Acción: matar D2-02. Hero number sin contexto no es la palanca.</div>
+          <div class="lbl">NO</div>
+          <div class="txt">El número específico se siente sospechoso ('seguro es el mejor mes de la mejor clienta — no me va a pasar a mí'). El promedio agregado se lee como honesto y replicable.</div>
+          <div class="action">Acción: Mantener cifras agregadas como hero pero con metodología visible ('promedio de 47 clientas Ainnovation en 90 días'). El comprador 2026 quiere ver el método detrás del número, no el número solo.</div>
         </div>
       </div>
     </div>
@@ -1237,20 +1252,20 @@
         <div class="meta-item"><span class="label">CTA:</span><span class="value">DEMO</span></div>
       </div>
       <blockquote class="hook">"Alguien va a la competencia. A las 8:32pm. Forensia de una venta que no hiciste."</blockquote>
-      <div class="var-block">
-        <div class="lbl">Variable que testea (vs D1-04 timeline simple)</div>
-        <div class="txt">Forensia detallada vs timeline simple - mismo dolor, más profundidad narrativa, formato investigativo.</div>
+      <div class="var-block question">
+        <div class="lbl">Pregunta Jordi</div>
+        <div class="txt">¿El comprador profesional de salud responde mejor cuando el dolor se le da procesado (timeline simple) o cuando se le invita a co-diagnosticar (forensia detallada paso por paso)? ¿La autoridad se respeta más cuando informa o cuando enseña a pensar?</div>
       </div>
       <div class="reading-grid">
         <div class="reading-cell win">
-          <div class="lbl">Si gana</div>
-          <div class="txt">Cynthia necesita procesar el dolor con detalle. La forensia construye urgencia mayor que el número solo.</div>
-          <div class="action">Acción: replicar formato "autopsia" a verticales premium (dental, estética, abogados, contadores).</div>
+          <div class="lbl">SÍ</div>
+          <div class="txt">Cynthia compra cuando se le trata como peer intelectual — la forensia detallada le da rol activo (analiza el caso conmigo, no me lo cuentes). La categoría salud se vende con profundidad analítica, no con headlines.</div>
+          <div class="action">Acción: Crear formato 'Caso clínico Ainnovation' mensual — long-form post-mortem de pacientes perdidos en clínicas del pool, con metodología forense. Replicar a verticales de profesionales adultos. Construye autoridad de categoría + earned media.</div>
         </div>
         <div class="reading-cell lose">
-          <div class="lbl">Si pierde a D1-04</div>
-          <div class="txt">El número solo basta. Más detalle satura.</div>
-          <div class="action">Acción: matar D2-03. Mantener D1-04 minimalista para clínicas.</div>
+          <div class="lbl">NO</div>
+          <div class="txt">El detalle excesivo se vuelve teatro — Cynthia siente que le están vendiendo drama, no diagnóstico. El comprador clínico tiene poco tiempo y prefiere la versión ejecutiva.</div>
+          <div class="action">Acción: Mantener D1-04 timeline minimalista como master clínicas. Reservar el formato 'autopsia' para contenido orgánico de marca (LinkedIn long-form), no para CTWA. Distinción canal: lo denso vive en orgánico, lo punzante vive en paid.</div>
         </div>
       </div>
     </div>
@@ -1284,20 +1299,20 @@
         <div class="meta-item"><span class="label">CTA:</span><span class="value">GHL → ghl_agent</span></div>
       </div>
       <blockquote class="hook">"GHL es la navaja suiza. Falta el cuchillero. Tú tienes la herramienta. Nosotros le sacamos filo."</blockquote>
-      <div class="var-block">
-        <div class="lbl">Variable que testea (vs D1-05 culpa)</div>
-        <div class="txt">Metáfora aspiracional - reframe: no es tu culpa, es que falta el operador.</div>
+      <div class="var-block question">
+        <div class="lbl">Pregunta Jordi</div>
+        <div class="txt">¿Luis acepta el reframe metafórico que le quita responsabilidad ('tienes la herramienta, falta el cuchillero') más que la confrontación directa de D1-05? ¿Es señal de que el messaging B2B LATAM tiene que liberar al comprador de la culpa antes de que pueda decidir?</div>
       </div>
       <div class="reading-grid">
         <div class="reading-cell win">
-          <div class="lbl">Si gana</div>
-          <div class="txt">Luis NO acepta culpa pero acepta metáfora porque le quita responsabilidad. El reframe vence.</div>
-          <div class="action">Acción: reescribir TODO el messaging GHL en clave aspiracional. Metáforas en otros verticales tech-savvy.</div>
+          <div class="lbl">SÍ</div>
+          <div class="txt">El comprador LATAM B2B SaaS necesita preservación de ego para decidir — la metáfora es el dispositivo retórico que le permite comprar sin admitir derrota. Insight cultural: el estadounidense acepta confrontación como adulta, el latinoamericano la lee como ataque.</div>
+          <div class="action">Acción: Reescribir TODO el messaging GHL desde marcos aspiracionales/metafóricos. Política editorial: nunca acusar al comprador de un mal uso, siempre ofrecer reframe que lo posicione como protagonista. Insight publicable a board.</div>
         </div>
         <div class="reading-cell lose">
-          <div class="lbl">Si pierde</div>
-          <div class="txt">La culpa funciona (D1-05). Luis sí siente que desperdicia GHL.</div>
-          <div class="action">Acción: matar D2-04. Mantener tono confrontacional.</div>
+          <div class="lbl">NO</div>
+          <div class="txt">La metáfora suena vacía — Luis prefiere directness. El comprador GHL ya es bastante sofisticado para no necesitar el cushion emocional. La metáfora aristocrática no escala en B2B operativo.</div>
+          <div class="action">Acción: Validar D1-05 (confrontación directa) como ganador. Aplicar tono adulto-directo en todo el messaging GHL. Implicación: en este segmento específico, eficiencia > diplomacia.</div>
         </div>
       </div>
     </div>
@@ -1331,20 +1346,20 @@
         <div class="meta-item"><span class="label">CTA:</span><span class="value">AGENCIA → agencies_agent</span></div>
       </div>
       <blockquote class="hook">"Tu problema · Nuestra solución. Tus clientes cancelan. Nosotros los retenemos."</blockquote>
-      <div class="var-block">
-        <div class="lbl">Variable que testea (vs D1-06 manifesto)</div>
-        <div class="txt">Problema-solución directo. Sin filosofía. Diagnóstico → tratamiento.</div>
+      <div class="var-block question">
+        <div class="lbl">Pregunta Jordi</div>
+        <div class="txt">Si el formato directo problema-solución gana a la op-ed (D1-06), ¿estamos viendo la consolidación de un mercado B2B LATAM que ya pasó la fase de seducción narrativa y entró a la fase de eficiencia transaccional?</div>
       </div>
       <div class="reading-grid">
         <div class="reading-cell win">
-          <div class="lbl">Si gana</div>
-          <div class="txt">Reseller no quiere filosofía - es tiempo/dinero. Diagnóstico → solución → cierre.</div>
-          <div class="action">Acción: aplicar tono directo a TODO el funnel partner. Matar manifesto.</div>
+          <div class="lbl">SÍ</div>
+          <div class="txt">El reseller LATAM 2026 ya no necesita ser educado ni seducido — quiere diagnóstico y precio. La era del content marketing largo en este segmento terminó. Estamos en momento de simplificación, no de elaboración.</div>
+          <div class="action">Acción: Toda comunicación partner pasa a formato directo. Recortar pipeline de qualification a 2-3 mensajes. Construir landing tipo 'spec sheet' en lugar de landing tipo 'manifesto'. Liberar presupuesto editorial para reasignar a producto.</div>
         </div>
         <div class="reading-cell lose">
-          <div class="lbl">Si pierde</div>
-          <div class="txt">El manifesto crea conexión emocional necesaria para confiar (D1-06 gana).</div>
-          <div class="action">Acción: el partner deal requiere venta consultiva con narrativa.</div>
+          <div class="lbl">NO</div>
+          <div class="txt">El formato directo se siente commodity — el reseller responde mejor a contenido que construye categoría (D1-06). El partner no es transacción, es relación, y la relación se construye con voz.</div>
+          <div class="action">Acción: Validar la op-ed como master del canal partner. Construir línea editorial permanente. Implicación de marca: Ainnovation en B2B compite en autoridad de pensamiento, no en pricing.</div>
         </div>
       </div>
     </div>
@@ -1378,20 +1393,20 @@
         <div class="meta-item"><span class="label">CTA:</span><span class="value">PARTNER → agencies_agent</span></div>
       </div>
       <blockquote class="hook">"Pixel · CAPI · UTMs · Dashboards · Tú. Stack técnico para agencias que quieren cobrar más."</blockquote>
-      <div class="var-block">
-        <div class="lbl">Variable que testea (vs D1-07 educativo)</div>
-        <div class="txt">Lenguaje técnico-críptico - no explica, asume conocimiento. Filtra a quien sí entiende.</div>
+      <div class="var-block question">
+        <div class="lbl">Pregunta Jordi</div>
+        <div class="txt">¿El director de agencia creativa quiere que le validemos su sofisticación técnica (lenguaje críptico que asume conocimiento) o que le acompañemos a desarrollarla (lenguaje educativo que explica)? ¿Cuál es el estado real del vocabulario técnico de la agencia LATAM 2026?</div>
       </div>
       <div class="reading-grid">
         <div class="reading-cell win">
-          <div class="lbl">Si gana</div>
-          <div class="txt">Las agencias responden a códigos técnicos - saber el vocabulario es señal de pertenencia al club.</div>
-          <div class="action">Acción: crear más contenido dirigido a CMOs con lenguaje técnico. Matar tono educativo.</div>
+          <div class="lbl">SÍ</div>
+          <div class="txt">Existe un sub-segmento de directores de agencia que sí maneja el vocabulario y se siente reconocido cuando lo hablamos sin traducir. El messaging críptico actúa como filtro: trae sólo a los que ya están listos para partnership real.</div>
+          <div class="action">Acción: Mantener dark tech pills para top of funnel. Construir tier premium 'Stack para agencias' con onboarding asumiendo conocimiento. Pricing alto justificado: el comprador que entiende el código paga por verlo en serio.</div>
         </div>
         <div class="reading-cell lose">
-          <div class="lbl">Si pierde</div>
-          <div class="txt">Las agencias necesitan que les expliquen primero (D1-07 gana). NO tienen vocabulario técnico interno.</div>
-          <div class="action">Acción: tono educativo es el camino. Matar dark tech pills.</div>
+          <div class="lbl">NO</div>
+          <div class="txt">El lenguaje técnico-críptico filtra demasiado — sólo entran 3-4 leads/mes. La agencia LATAM aún necesita traducción. El messaging educativo (D1-07) es la palanca real de volumen.</div>
+          <div class="action">Acción: Política dual confirmada: D1-07 educativo para volumen, D2-06 críptico para LinkedIn orgánico (donde construye reputación sin necesitar conversión). Distinción canal por madurez de buyer.</div>
         </div>
       </div>
     </div>
@@ -1425,20 +1440,20 @@
         <div class="meta-item"><span class="label">CTA:</span><span class="value">INMOBILIARIA</span></div>
       </div>
       <blockquote class="hook">"No tienes visibilidad. Ni seguimiento. Ni datos. Un sistema resuelve los 3."</blockquote>
-      <div class="var-block">
-        <div class="lbl">Variable que testea (vs D1-08 dashboard)</div>
-        <div class="txt">Diagnóstico antes que solución - 3 dolores explícitos enumerados → solución condensada al final.</div>
+      <div class="var-block question">
+        <div class="lbl">Pregunta Jordi</div>
+        <div class="txt">Tres dolores enumerados sin solución hasta el final, ¿generan confianza ('este entiende mi negocio') o resistencia ('no necesito que me digan lo que ya sé')? ¿El director PyME premium MX compra de quien lo diagnostica o de quien lo respeta?</div>
       </div>
       <div class="reading-grid">
         <div class="reading-cell win">
-          <div class="lbl">Si gana</div>
-          <div class="txt">Alejandro necesita que le digan QUÉ está mal antes de QUÉ comprar. Auto-identificación precede compra.</div>
-          <div class="action">Acción: estructura "3 dolores → 1 solución" para todos los ads premium. Matar D1-08.</div>
+          <div class="lbl">SÍ</div>
+          <div class="txt">Alejandro acepta diagnóstico externo cuando la enumeración es precisa — es señal de que el proveedor entiende la operación. Construye confianza pre-pitch. Estructura '3 dolores → 1 solución' es replicable a todo tier $4,999.</div>
+          <div class="action">Acción: Estandarizar formato diagnóstico para todos los ads premium. Crear 'Diagnóstico Ainnovation' como lead magnet pago-bajo ($299) que sirva de qualifier — el comprador que paga por el diagnóstico cierra el sistema.</div>
         </div>
         <div class="reading-cell lose">
-          <div class="lbl">Si pierde</div>
-          <div class="txt">Director quiere ver el dashboard funcionando, no le interesa el diagnóstico (D1-08 gana).</div>
-          <div class="action">Acción: producir video demo del dashboard real. Matar D2-07.</div>
+          <div class="lbl">NO</div>
+          <div class="txt">El director PyME mexicano no compra a quien le explica sus problemas — la jerarquía cultural exige que el proveedor llegue con respeto, no con diagnóstico. El comprador premium en LATAM aún privilegia la deferencia sobre la consulta.</div>
+          <div class="action">Acción: Validar D1-08 (dashboard como solución) como master. Adaptar messaging premium desde 'te muestro la herramienta' no 'te diagnostico el problema'. Insight cultural: el comprador premium LATAM compra de iguales que ofrecen, no de expertos que enseñan.</div>
         </div>
       </div>
     </div>
@@ -1472,20 +1487,20 @@
         <div class="meta-item"><span class="label">CTA:</span><span class="value">(foto) → staging_agent</span></div>
       </div>
       <blockquote class="hook">"Antes / Después. En 24 horas. Gratis."</blockquote>
-      <div class="var-block">
-        <div class="lbl">Variable que testea (vs D1-09 portfolio)</div>
-        <div class="txt">Promesa visible (transformación de UNA propiedad). Calidad de UN ejemplo vs cantidad de ejemplos.</div>
+      <div class="var-block question">
+        <div class="lbl">Pregunta Jordi</div>
+        <div class="txt">¿La transformación dramática de UN caso vence al portfolio de 4 (D1-09) porque el agente decide por aspiración (qué quiere lograr con una propiedad específica) en lugar de por validación (cuántos casos previos hay)? ¿La compra es prospectiva o retrospectiva?</div>
       </div>
       <div class="reading-grid">
         <div class="reading-cell win">
-          <div class="lbl">Si gana</div>
-          <div class="txt">El agente prefiere ver UN ejemplo dramático que portfolio de muchos. Calidad sobre cantidad.</div>
-          <div class="action">Acción: formato before/after para todos los lead magnets futuros. Matar portfolio.</div>
+          <div class="lbl">SÍ</div>
+          <div class="txt">El agente compra desde el deseo del próximo listing, no desde la prueba del pasado. La aspiración vende mejor que el track record en este segmento. Toda la categoría lead-magnet podría reframearse desde 'imagina tu próximo cierre' en vez de 'mira lo que hicimos'.</div>
+          <div class="action">Acción: Pivotar todo el lead magnet a formato aspiracional ('manda tu peor foto, te devolvemos cómo se vería'). Reasignar producción de portfolio a producción de 'conversiones individuales con storytelling'.</div>
         </div>
         <div class="reading-cell lose">
-          <div class="lbl">Si pierde</div>
-          <div class="txt">El agente necesita ver trabajo previo de OTROS para confiar (D1-09 portfolio gana).</div>
-          <div class="action">Acción: construir banco de casos reales con permisos de uso. Matar D2-08.</div>
+          <div class="lbl">NO</div>
+          <div class="txt">La cantidad construye más confianza que la dramatización individual — el agente quiere ver patrón, no excepción. La aspiración suena a venta, el portfolio suena a evidencia.</div>
+          <div class="action">Acción: Validar D1-09 portfolio como master. Construir banco de 50+ casos reales documentados. La credibilidad escala con N, no con dramatización.</div>
         </div>
       </div>
     </div>
@@ -1518,20 +1533,20 @@
         <div class="meta-item"><span class="label">CTA:</span><span class="value">LISTO o AUDITORIA</span></div>
       </div>
       <blockquote class="hook">"Ya nos viste. Volviste. LISTO=$1,999 · AUDITORIA=20 capturas, te decimos qué arreglar gratis"</blockquote>
-      <div class="var-block">
-        <div class="lbl">Variable que testea (CTA dual interno)</div>
-        <div class="txt">Recordatorio simple vs lead magnet auditoría - ¿qué necesita el lead que no convirtió: empuje o nuevo valor?</div>
+      <div class="var-block question">
+        <div class="lbl">Pregunta Jordi</div>
+        <div class="txt">Nombrar la culpa de 'ya nos viste, volviste' en el visitante que no convirtió, ¿activa decisión (porque le da permiso a comprar lo que ya consideraba) o aleja (porque expone vigilancia y rompe la ilusión de privacidad)? ¿El comprador mexicano 2026 acepta ser leído por la marca?</div>
       </div>
       <div class="reading-grid">
         <div class="reading-cell win">
-          <div class="lbl">Si LISTO &gt; AUDITORIA</div>
-          <div class="txt">Pool retargeted solo necesitaba un empujón. Primera exposición les bastó, faltaba urgencia.</div>
-          <div class="action">Acción: mantener LISTO como CTA principal.</div>
+          <div class="lbl">SÍ</div>
+          <div class="txt">El comprador LATAM aceptó la nueva normalidad post-cookies — sabe que la marca lo reconoce y lo agradece. Nombrar la culpa funciona como permiso para cerrar lo que ya quería. Valida que retargeting consciente puede ser más poderoso que retargeting invisible.</div>
+          <div class="action">Acción: Construir línea editorial de retargeting 'consciente' — la marca habla al visitante sabiendo que ya nos vio. Replicar a email, WhatsApp broadcast, SMS. Convertir la transparencia en distintivo de marca.</div>
         </div>
         <div class="reading-cell lose">
-          <div class="lbl">Si AUDITORIA &gt; LISTO</div>
-          <div class="txt">Pool necesita validación adicional - primera exposición no fue suficiente.</div>
-          <div class="action">Acción: convertir AUDITORIA en lead magnet permanente. Más entregables gratis.</div>
+          <div class="lbl">NO</div>
+          <div class="txt">La culpa nombrada genera incomodidad — el comprador prefiere que la marca actúe como si fuera la primera vez (la cortesía del olvido). El retargeting transparente lee como manipulación, no como conversación.</div>
+          <div class="action">Acción: Reescribir D2-09 desde tono neutro 'tenemos algo nuevo para ti' sin reconocer la visita previa. Insight cultural: el comprador LATAM 2026 todavía no acepta la transparencia post-cookies como norma social.</div>
         </div>
       </div>
     </div>
@@ -1565,20 +1580,20 @@
         <div class="meta-item"><span class="label">CTA:</span><span class="value">SISTEMA</span></div>
       </div>
       <blockquote class="hook">"Contestar WhatsApp es solo el principio. ¿Cuántos leads llegaron? ¿Cuántos compraron? Si no sabes, no tienes sistema."</blockquote>
-      <div class="var-block">
-        <div class="lbl">Variable que testea (sin par directo)</div>
-        <div class="txt">Test puro de precio premium directo - ¿existe el comprador que paga $4,999 en frío sin entry $1,999?</div>
+      <div class="var-block question">
+        <div class="lbl">Pregunta Jordi</div>
+        <div class="txt">Cuando Mariana ve '0 veces tocó el teléfono', ¿lo que la mueve es el alivio operacional (recuperar tiempo) o el estatus implícito (delegar = ser dueña, no operadora)?</div>
       </div>
       <div class="reading-grid">
         <div class="reading-cell win">
-          <div class="lbl">Si cierra 1-2 clientes en 6 sem</div>
-          <div class="txt">Existe comprador premium directo, pool chico pero ROAS alto.</div>
-          <div class="action">Acción: mantener budget bajo (5%). Crear más variantes premium verticalizadas.</div>
+          <div class="lbl">SÍ</div>
+          <div class="txt">Mariana compra liberación operativa concreta — la promesa funcional gana sobre la promesa identitaria. Producto debe venderse como minutos recuperados.</div>
+          <div class="action">Acción: Construir messaging entry $1,999 sobre métricas de tiempo recuperado (horas/semana, llamadas no contestadas). Caso de estudio: video de Mariana cenando con familia mientras el bot trabaja.</div>
         </div>
         <div class="reading-cell lose">
-          <div class="lbl">Si NO cierra ningún cliente en frío</div>
-          <div class="txt">Path real es entry $1,999 → upgrade orgánico tras 30-60 días.</div>
-          <div class="action">Acción: matar D2-10. Mover mensaje "Sistema Completo" a email para clientes activos.</div>
+          <div class="lbl">NO</div>
+          <div class="txt">Mariana resiente que le digan que delegar es 'no tocar' — porque tocar es identidad. La narrativa de ausencia se lee como pérdida de control, no como liberación.</div>
+          <div class="action">Acción: Reescribir messaging Belleza desde 'el sistema te hace MÁS dueña, no menos' — el bot reporta a ella, no la sustituye. Replantear el '0' como punto de fricción, no como hero.</div>
         </div>
       </div>
     </div>
