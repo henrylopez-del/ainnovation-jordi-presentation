@@ -563,7 +563,7 @@
 
   /* Large tablet / small desktop ≤ 1200px — tighten collage tiles */
   @media (max-width: 1200px) {
-    .bp-cols { gap: 14px; }
+    .bp-cols { column-gap: 14px; }
     .bp-grid { grid-template-columns: repeat(4, 1fr); gap: 3px; }
     .bp-header { font-size: 9px; letter-spacing: 0.10em; }
     .bp-intro { font-size: 11px; }
@@ -575,7 +575,7 @@
     .body { grid-template-columns: 1fr; gap: 20px; padding: 16px 0; }
     .right-col { max-height: 40vh; }
     .ads-grid-19 { grid-template-columns: repeat(5, 1fr); }
-    .bp-cols { grid-template-columns: 1fr; gap: 8px; }
+    .bp-cols { columns: 1; }
     .bp-grid { grid-template-columns: repeat(6, 1fr); }
     .right-col.trio { flex-direction: row; flex-wrap: wrap; gap: 10px; }
     .right-col.trio .variant-img { flex: 1 1 30%; }
@@ -708,8 +708,9 @@
 
 <!-- 3 · BIG PICTURE + ADS POR VERTICAL -->
 <style>
-.bp-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-.bp-section { margin-bottom: 8px; }
+.bp-cols { columns: 2; column-gap: 18px; column-fill: balance; }
+.bp-col { display: contents; }
+.bp-section { margin-bottom: 10px; break-inside: avoid; -webkit-column-break-inside: avoid; page-break-inside: avoid; display: block; }
 .bp-header { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--magenta); font-weight: 700; padding: 3px 0; border-bottom: 1px solid rgba(255,255,255,0.12); margin-bottom: 5px; }
 .bp-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; }
 .bp-grid .grid-tile { aspect-ratio: 9/16; }
